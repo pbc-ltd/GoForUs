@@ -3,6 +3,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :orders
+    resources :customers
+    resources :partners
+    resources :stores do
+      resources :inventory, only: [:index]
+    end
+    resources :items
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

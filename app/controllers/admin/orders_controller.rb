@@ -1,5 +1,7 @@
 class Admin::OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  
+  layout 'admin'
 
   def index 
     @orders = Order.where(nil)

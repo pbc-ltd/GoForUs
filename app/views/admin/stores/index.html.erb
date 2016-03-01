@@ -1,0 +1,11 @@
+<%= content_for :page_title, 'Stores' %>
+
+<ul>
+  <% @stores.each do |s| %>
+    <li>
+      <b>Name:</b> <%= s.name %><br/>
+      <b>Address:</b> <%= s.address %><br/>
+      <b><%= link_to "Inventory (#{s.items.count})", admin_store_inventory_index_path(s.id) %></b>
+    </li>
+  <% end %>
+</ul>
