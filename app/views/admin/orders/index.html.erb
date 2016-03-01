@@ -1,0 +1,21 @@
+<h1 class="page_title">Orders</h1>
+
+<div>
+  <ul>
+    <% @orders.each do |o| %>
+      <li>
+        <b>Ordered by:</b> <%= link_to o.customer.name, 'TODO: link to customer' %>
+        <b>Delivery by:</b> <%= link_to o.partner.name, 'TODO: link to partner' %>
+        <ol>
+          <% o.items.each do |i| %>
+            <li>
+              <b>Name:</b> <%= i.name %>
+              <b>Price:</b> <%= i.price %>
+              <b>Store:<b/> <%= link_to i.store.name, 'TODO: link to store' %>
+            </li>
+          <% end %>
+        </ol>
+      </li>
+    <% end %>
+  </ul>
+</div>
