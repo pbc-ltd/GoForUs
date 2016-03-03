@@ -1,5 +1,10 @@
 class Admin::PartnersController < ApplicationController
-  before_action :set_partner, only: [:show, :edit, :update, :destroy]
+  include ::Deactivateable::Controller
+
+  before_action :set_partner, only: [
+    :show, :edit, :update, :destroy
+  ]
+
   
   layout 'admin'
 
@@ -14,15 +19,24 @@ class Admin::PartnersController < ApplicationController
   end
 
   def update
-    @partner.update(partner_params)
+    if @partner.update(partner_params)
+      redirect_to admin_partner_path(@partner.id)
+    else
+      render :show
+    end
   end
 
   def destroy
+    if @partner.destroy!
+      redirect_to admin_partner_path(@partner.id)
+    else
+      render :show
+    end
   end
 
   private
   def partner_params
-    #TODO
+    params.require(:partner).permit(:mobile_number, :name)
   end
 
   def set_partner

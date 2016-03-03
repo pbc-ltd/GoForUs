@@ -1,0 +1,10 @@
+<%= content_for :page_title, "Partner: #{@partner.name.titleize}" %>
+
+<div>
+  <%= form_for @partner, url: admin_partner_path(@partner) do |f| %>
+    <div><b>Name: </b> <%= f.text_field :name %></div>
+  
+    <div><b>Mobile Number: </b> <%= f.text_field :mobile_number %></div>
+    <%= f.submit %>
+  <% end %>
+</div>

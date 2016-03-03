@@ -4,8 +4,8 @@
   <ul>
     <% @orders.each do |o| %>
       <li>
-        <b>Ordered by:</b> <%= link_to o.customer.name, 'TODO: link to customer' %>
-        <b>Delivery by:</b> <%= link_to o.partner.name, 'TODO: link to partner' %>
+        <b>Ordered by:</b> <%= link_to o.customer.name, admin_customer_path(o.customer.id) %>
+        <b>Delivery by:</b> <%= link_to o.partner.name, admin_partner_path(o.partner.id) %>
         <ol>
           <% o.items.each do |i| %>
             <li>

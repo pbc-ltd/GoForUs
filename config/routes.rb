@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :orders
     resources :customers, concerns: [:activateable, :deactivateable]
-    resources :partners
+    resources :partners, concerns: [:activateable, :deactivateable]
     resources :stores do
       resources :inventory, only: [:index]
     end
