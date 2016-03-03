@@ -1,14 +1,27 @@
 Rails.application.routes.draw do
+  
+  concern :activateable do
+    post 'activate'
+  end
+
+  concern :deactivateable do
+    post 'deactivate'
+  end
+  
   root 'pages#home'
+
+  get 'admin'  => 'admin/dashboard#index'
+  get 'admin/' => 'admin/dashboard#index'
 
   namespace :admin do
     resources :orders
-    resources :customers
+    resources :customers, concerns: [:activateable, :deactivateable]
     resources :partners
     resources :stores do
       resources :inventory, only: [:index]
     end
     resources :items
+    resources :dashboard, only: [:index]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

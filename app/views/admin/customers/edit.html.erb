@@ -1,0 +1,10 @@
+<%= content_for :page_title, "Customer: #{@customer.name.titleize}" %>
+
+<div>
+  <%= form_for @customer, url: admin_customer_path(@customer) do |f| %>
+    <div><b>Name: </b> <%= f.text_field :name %></div>
+  
+    <div><b>Mobile Number: </b> <%= f.text_field :mobile_number %></div>
+    <%= f.submit %>
+  <% end %>
+</div>

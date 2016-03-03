@@ -1,10 +1,29 @@
 <%= content_for :page_title, 'Customers' %>
 
-<ul>
+<table class="index-list">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mobile Mobile</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
   <% @customers.each do |c| %>
-    <li>
-      <b>Name:</b> <%= c.name %><br/>
-      <b>Mobile Number:</b> <%= c.mobile_number  %>
-    </li>
+    <tr>
+      <td><%= c.name %></td>
+      <td><%= c.mobile_number  %></td>
+      <td>
+        <%= link_to 'View', admin_customer_path(c) %> |
+        <%= link_to 'Edit', edit_admin_customer_path(c) %> |
+        <% if c.deactivated? %>
+          <%= link_to '[ACTIVATE]', admin_customer_activate_path(c.id), method: :post %>
+        <% else %>
+          <%= link_to '[DEACTIVATE]', admin_customer_deactivate_path(c.id), method: :post %>
+        <% end %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>
