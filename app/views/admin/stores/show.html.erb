@@ -1,0 +1,15 @@
+<%= content_for :page_title, "Store: #{@store.name.titleize}" %>
+
+<div>
+  <b>Name: </b> <%= @store.name %>
+  <b>Address: </b> <%= @store.address %>
+  <b>Lat Lng: </b> <%= @store.lat + ' ' + @store.lng %>
+</div>
+
+<%= link_to '[EDIT]', edit_admin_store_path(@store.id) %>
+<% if @store.deactivated? %>
+  <%= link_to '[ACTIVATE]', admin_store_activate_path(@store.id), method: :post %>
+<% else %>
+  <%= link_to '[DEACTIVATE]', admin_store_deactivate_path(@store.id), method: :post %>
+<% end %>
+

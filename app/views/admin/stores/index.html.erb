@@ -1,11 +1,38 @@
 <%= content_for :page_title, 'Stores' %>
 
-<ul>
+<table class="index-list">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address 1</th>
+      <th>Address 2</th>
+      <th>County</th>
+      <th>Postcode</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+    </tr>
+  </thead>
+
+  <tbody>
   <% @stores.each do |s| %>
-    <li>
-      <b>Name:</b> <%= s.name %><br/>
-      <b>Address:</b> <%= s.address %><br/>
-      <b><%= link_to "Inventory (#{s.items.count})", admin_store_inventory_index_path(s.id) %></b>
-    </li>
+    <tr>
+      <td><%= s.name %></td>
+      <td><%= s.address_1 %></td>
+      <td><%= s.address_2%></td>
+      <td><%= s.county %></td>
+      <td><%= s.postcode %></td>
+      <td><%= s.lat %></td>
+      <td><%= s.lng %></td>
+      <td>
+        <%= link_to 'View', admin_store_path(s) %> |
+        <%= link_to 'Edit', edit_admin_store_path(s) %> |
+        <% if s.deactivated? %>
+          <%= link_to '[ACTIVATE]', admin_store_activate_path(s.id), method: :post %>
+        <% else %>
+          <%= link_to '[DEACTIVATE]', admin_store_deactivate_path(s.id), method: :post %>
+        <% end %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :orders
     resources :customers, concerns: [:activateable, :deactivateable]
     resources :partners, concerns: [:activateable, :deactivateable]
-    resources :stores do
+    resources :stores, concerns: [:activateable, :deactivateable] do
       resources :inventory, only: [:index]
     end
     resources :items

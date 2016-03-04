@@ -1,4 +1,6 @@
 class Admin::StoresController < ApplicationController
+  include ::Deactivateable::Controller
+
   before_action :set_store, only: [:show, :edit, :update, :destroy]
   
   layout 'admin'
@@ -14,18 +16,26 @@ class Admin::StoresController < ApplicationController
   end
 
   def update
-    @store.update(store_params)
+    if @store.update(store_params)
+      redirect_to admin_store_path(@store.id)
+    else
+      render :show
+    end
   end
 
   def destroy
+    if @store.destroy!
+      redirect_to admin_store_path(@store.id)
+    else
+      render :show
+    end
   end
-
   private
   def store_params
-    #TODO
+    params.require(:store).permit(:name, :address_1, :address_2, :county, :postcode, :lat, :lng)
   end
 
   def set_store
-    @store = store.find(params[:id])
+    @store = Store.find(params[:id])
   end
 end

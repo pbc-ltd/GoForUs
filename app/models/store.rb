@@ -1,4 +1,6 @@
 class Store < ActiveRecord::Base
+  include Deactivateable::Model
+
   has_many :items
   has_many :orders, through: :items
 
