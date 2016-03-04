@@ -11,7 +11,7 @@
             <li>
               <b>Name:</b> <%= i.name %>
               <b>Price:</b> <%= i.price %>
-              <b>Store:<b/> <%= link_to i.store.name, 'TODO: link to store' %>
+              <b>Store:<b/> <%= link_to i.store.name, admin_store_path(i.store.id) %>
             </li>
           <% end %>
         </ol>
