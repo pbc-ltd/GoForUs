@@ -1,30 +1,32 @@
 <%= content_for :page_title, 'Partners' %>
 
 
-<table class="index-list">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Mobile Mobile</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
+<div class="container content">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Mobile Mobile</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
 
-  <tbody>
-  <% @partners.each do |p| %>
-    <tr>
-      <td><%= p.name %></td>
-      <td><%= p.mobile_number  %></td>
-      <td>
-        <%= link_to 'View', admin_partner_path(p) %> |
-        <%= link_to 'Edit', edit_admin_partner_path(p) %> |
-        <% if p.deactivated? %>
-          <%= link_to '[ACTIVATE]', admin_partner_activate_path(p.id), method: :post %>
-        <% else %>
-          <%= link_to '[DEACTIVATE]', admin_partner_deactivate_path(p.id), method: :post %>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+    <tbody>
+      <% @partners.each do |p| %>
+        <tr>
+          <td><%= p.name %></td>
+          <td><%= p.mobile_number  %></td>
+          <td>
+            <%= link_to 'View', admin_partner_path(p) %> |
+            <%= link_to 'Edit', edit_admin_partner_path(p) %> |
+            <% if p.deactivated? %>
+              <%= link_to '[ACTIVATE]', admin_partner_activate_path(p.id), method: :post %>
+            <% else %>
+              <%= link_to '[DEACTIVATE]', admin_partner_deactivate_path(p.id), method: :post %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

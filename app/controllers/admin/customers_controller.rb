@@ -1,12 +1,10 @@
-class Admin::CustomersController < ApplicationController
+class Admin::CustomersController < Admin::BaseController
   include ::Deactivateable::Controller
 
   before_action :set_customer, only: [
     :show, :edit, :update, :destroy
   ]
   
-  layout 'admin'
-
   def index 
     @customers = Customer.where(nil)
   end

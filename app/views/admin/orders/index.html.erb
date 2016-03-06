@@ -1,21 +1,27 @@
 <%= content_for :page_title, 'Orders' %>
 
-<div>
-  <ul>
-    <% @orders.each do |o| %>
-      <li>
-        <b>Ordered by:</b> <%= link_to o.customer.name, admin_customer_path(o.customer.id) %>
-        <b>Delivery by:</b> <%= link_to o.partner.name, admin_partner_path(o.partner.id) %>
-        <ol>
-          <% o.items.each do |i| %>
-            <li>
-              <b>Name:</b> <%= i.name %>
-              <b>Price:</b> <%= i.price %>
-              <b>Store:<b/> <%= link_to i.store.name, admin_store_path(i.store.id) %>
-            </li>
-          <% end %>
-        </ol>
-      </li>
-    <% end %>
-  </ul>
+<div class="container content">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Ordered By</th>
+        <th>Delivery By</th>
+        <th>Items</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @orders.each do |o| %>
+        <tr>
+          <td><%= o.id %></td>
+          <td><%= link_to o.customer.name, admin_customer_path(o.customer.id) %></td>
+          <td><%= link_to o.partner.name, admin_partner_path(o.partner.id) %></td>
+          <td><%= link_to o.items.count, admin_order_items_path(o.id) %></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

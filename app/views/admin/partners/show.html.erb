@@ -1,14 +1,14 @@
 <%= content_for :page_title, "Partner: #{@partner.name.titleize}" %>
 
-<div>
-  <b>Name: </b> <%= @partner.name %>
-  <b>Mobile Number: </b> <%= @partner.mobile_number%>
-</div>
+<div class="container content">
+  <b>Name: </b> <%= @partner.name %></br>
+  <b>Mobile Number: </b> <%= @partner.mobile_number %>
 
-<%= link_to '[EDIT]', edit_admin_partner_path(@partner.id) %>
-<% if @partner.deactivated? %>
-  <%= link_to '[ACTIVATE]', admin_partner_activate_path(@partner.id), method: :post %>
-<% else %>
-  <%= link_to '[DEACTIVATE]', admin_partner_deactivate_path(@partner.id), method: :post %>
-<% end %>
+  <%= link_to '[EDIT]', edit_admin_partner_path(@partner.id) %>
+  <% if @partner.deactivated? %>
+    <%= link_to '[ACTIVATE]', admin_partner_activate_path(@partner.id), method: :post %>
+  <% else %>
+    <%= link_to '[DEACTIVATE]', admin_partner_deactivate_path(@partner.id), method: :post %>
+  <% end %>
+</div>
 

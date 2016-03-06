@@ -1,12 +1,9 @@
-class Admin::PartnersController < ApplicationController
+class Admin::PartnersController < Admin::BaseController
   include ::Deactivateable::Controller
 
   before_action :set_partner, only: [
     :show, :edit, :update, :destroy
   ]
-
-  
-  layout 'admin'
 
   def index 
     @partners = Partner.where(nil)

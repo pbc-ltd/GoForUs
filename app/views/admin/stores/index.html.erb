@@ -1,6 +1,7 @@
 <%= content_for :page_title, 'Stores' %>
 
-<table class="index-list">
+<div class="container content">
+  <table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -14,25 +15,25 @@
   </thead>
 
   <tbody>
-  <% @stores.each do |s| %>
-    <tr>
-      <td><%= s.name %></td>
-      <td><%= s.address_1 %></td>
-      <td><%= s.address_2%></td>
-      <td><%= s.county %></td>
-      <td><%= s.postcode %></td>
-      <td><%= s.lat %></td>
-      <td><%= s.lng %></td>
-      <td>
-        <%= link_to 'View', admin_store_path(s) %> |
-        <%= link_to 'Edit', edit_admin_store_path(s) %> |
-        <% if s.deactivated? %>
-          <%= link_to '[ACTIVATE]', admin_store_activate_path(s.id), method: :post %>
-        <% else %>
-          <%= link_to '[DEACTIVATE]', admin_store_deactivate_path(s.id), method: :post %>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
+    <% @stores.each do |s| %>
+      <tr>
+        <td><%= s.name %></td>
+        <td><%= s.address_1 %></td>
+        <td><%= s.address_2%></td>
+        <td><%= s.county %></td>
+        <td><%= s.postcode %></td>
+        <td><%= s.lat %></td>
+        <td><%= s.lng %></td>
+        <td>
+          <%= link_to 'View', admin_store_path(s) %> |
+          <%= link_to 'Edit', edit_admin_store_path(s) %> |
+          <% if s.deactivated? %>
+            <%= link_to '[ACTIVATE]', admin_store_activate_path(s.id), method: :post %>
+          <% else %>
+            <%= link_to '[DEACTIVATE]', admin_store_deactivate_path(s.id), method: :post %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>

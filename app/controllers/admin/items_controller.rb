@@ -1,12 +1,11 @@
-class Admin::ItemsController < ApplicationController
+class Admin::ItemsController < Admin::BaseController
+  before_action :set_order, only: [:index]
   before_action :set_item, only: [
     :show, :edit, :update, :destroy
   ]
   
-  layout 'admin'
-
   def index 
-    @item = Item.where(nil)
+    @items = @order.items
   end
 
   def show
@@ -24,7 +23,10 @@ class Admin::ItemsController < ApplicationController
 
   private
   def item_params
-    #TODO
+  end
+
+  def set_order
+    @order = Order.find(params[:order_id])
   end
 
   def set_item

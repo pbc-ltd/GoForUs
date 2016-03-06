@@ -1,14 +1,15 @@
 <%= content_for :page_title, "Customer: #{@customer.name.titleize}" %>
 
-<div>
+<div class="container content">
   <b>Name: </b> <%= @customer.name %>
   <b>Mobile Number: </b> <%= @customer.mobile_number%>
+
+  <%= link_to '[EDIT]', edit_admin_customer_path(@customer.id) %>
+  <% if @customer.deactivated? %>
+    <%= link_to '[ACTIVATE]', admin_customer_activate_path(@customer.id), method: :post %>
+  <% else %>
+    <%= link_to '[DEACTIVATE]', admin_customer_deactivate_path(@customer.id), method: :post %>
+  <% end %>
 </div>
 
-<%= link_to '[EDIT]', edit_admin_customer_path(@customer.id) %>
-<% if @customer.deactivated? %>
-  <%= link_to '[ACTIVATE]', admin_customer_activate_path(@customer.id), method: :post %>
-<% else %>
-  <%= link_to '[DEACTIVATE]', admin_customer_deactivate_path(@customer.id), method: :post %>
-<% end %>
 

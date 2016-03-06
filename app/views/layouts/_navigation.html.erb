@@ -1,0 +1,27 @@
+<!--start: Navbar -->
+<nav class="navbar navbar-default" role="navigation">		
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to root_path, class: 'navbar-brand' do %>
+        <i class="fa fa-power-off"></i> <span>Go</span>for<span>Us</span>
+      <% end %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-navigation">
+      <ul class="nav navbar-left navbar-nav">
+        <%= navigation_list_item_link_to 'Home',    root_path %>
+        <%= navigation_list_item_link_to 'About',   about_path %>
+        <%= navigation_list_item_link_to 'Contact', contact_path %>
+      </ul>
+    </div><!-- /.navbar-collapse -->		
+  </div>
+</nav>
+<!--end: Navbar -->

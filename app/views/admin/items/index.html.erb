@@ -1,0 +1,28 @@
+<%= content_for :page_title, "Order(#{@order.id}) - Items" %>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Store</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @items.each do |i| %>
+        <tr>
+          <td><%= i.id %></td>
+          <td><%= i.name %></td>
+          <td><%= link_to i.store.name, admin_store_path(i.store.id) %></td>
+          <td>
+            <%= link_to 'View', admin_order_item_path(@order.id, i.id) %> |
+            <%= link_to 'Edit', edit_admin_order_item_path(@order.id, i.id) %> |
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,5 +1,4 @@
-class Admin::InventoryController < ApplicationController
-  layout 'admin'
+class Admin::InventoryController < Admin::BaseController
   before_action :set_store, only: [:index]
 
   def index 

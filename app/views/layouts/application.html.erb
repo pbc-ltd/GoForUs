@@ -1,14 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang='en' class="csstransforms csstransforms3d csstransitions js cssanimations csstransitions">
   <head>
-    <title>CashGenerator</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
+    <title>Goferers | Home</title>
+    <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%#= csrf_meta_tags %>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- start: Facebook Open Graph -->
+    <meta property="og:title" content=""/>
+    <meta property="og:description" content=""/>
+    <meta property="og:type" content=""/>
+    <meta property="og:url" content=""/>
+    <meta property="og:image" content=""/>
+    <!-- end: Facebook Open Graph -->
+
+    <link href="/assets/bootstrap1.css" rel="stylesheet">
+    <link href="/assets/style.css" rel="stylesheet">
+    <link href="/assets/parallax-slider.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="/assets/respond.min.js"></script>
+
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Boogaloo">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic">
+  </head>
+
+  <body>
+    <%= render 'layouts/navigation' %>
+
+    <% unless yield(:page_title).empty? %>
+      <!-- start: Page Title-->
+      <div id="container-top"></div>
+      <div id="page-title">
+        <div id="page-title-inner">
+          <div class="container">
+            <h2><%= yield :page_title %></h2>
+          </div>
+        </div>	
+      </div>
+      <div id="container-bottom"></div>
+      <!-- end: Page Title-->
+    <% end %>
+    
     <%= yield %>
 
+    <!-- start: Java Script -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/assets/jquery-1.9.1.min.js"></script>
+    <script src="/assets/bootstrap.js"></script>
+    <script src="/assets/jquery.isotope.min.js"></script>
+    <script src="/assets/jquery.imagesloaded.js"></script>
+    <script src="/assets/flexslider.js"></script>
+    <script src="/assets/carousel.js"></script>
+    <script src="/assets/jquery.cslider.js"></script>
+    <script src="/assets/slider.js"></script>
+    <script src="/assets/jquery.fancybox.js"></script>
+
+    <script src="/assets/excanvas.js"></script>
+    <script src="/assets/jquery.flot.js"></script>
+    <script src="/assets/jquery.flot.pie.min.js"></script>
+    <script src="/assets/jquery.flot.stack.js"></script>
+    <script src="/assets/jquery.flot.resize.min.js"></script>
+
+    <script src="/assets/custom.js"></script>
+    <!-- end: Java Script -->
+
+    <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </body>
+
 </html>

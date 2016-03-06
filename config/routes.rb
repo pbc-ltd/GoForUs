@@ -9,18 +9,22 @@ Rails.application.routes.draw do
   end
   
   root 'pages#home'
+  get 'about'   => 'pages#about'
+  get 'contact' => 'pages#contact'
 
   get 'admin'  => 'admin/dashboard#index'
   get 'admin/' => 'admin/dashboard#index'
 
+  devise_for :admins
   namespace :admin do
-    resources :orders
+    resources :orders do
+      resources :items
+    end
     resources :customers, concerns: [:activateable, :deactivateable]
     resources :partners, concerns: [:activateable, :deactivateable]
     resources :stores, concerns: [:activateable, :deactivateable] do
       resources :inventory, only: [:index]
     end
-    resources :items
     resources :dashboard, only: [:index]
   end
 

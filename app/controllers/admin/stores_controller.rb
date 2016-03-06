@@ -1,10 +1,8 @@
-class Admin::StoresController < ApplicationController
+class Admin::StoresController < Admin::BaseController
   include ::Deactivateable::Controller
 
   before_action :set_store, only: [:show, :edit, :update, :destroy]
   
-  layout 'admin'
-
   def index 
     @stores = Store.where(nil)
   end

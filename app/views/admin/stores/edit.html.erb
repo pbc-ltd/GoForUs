@@ -1,15 +1,38 @@
 <%= content_for :page_title, "Store: #{@store.name.titleize}" %>
 
-<div>
+<div class="container content">
   <%= form_for @store, url: admin_store_path(@store) do |f| %>
-    <div><b>Name: </b> <%= f.text_field :name %></div>
-    <div><b>Address 1: </b> <%= f.text_field :address_1 %></div>
-    <div><b>Address 2: </b> <%= f.text_field :address_2 %></div>
-    <div><b>County: </b> <%= f.text_field :county %></div>
-    <div><b>Postcode: </b> <%= f.text_field :postcode %></div>
-    <div><b>Lat: </b> <%= f.text_field :lat %></div>
-    <div><b>Lng: </b> <%= f.text_field :lng %></div>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :address_1 %>
+      <%= f.text_field :address_1, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :address_2 %>
+      <%= f.text_field :address_2, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :county %>
+      <%= f.text_field :county, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :postcode %>
+      <%= f.text_field :postcode, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :lat %>
+      <%= f.text_field :lat, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :lng %>
+      <%= f.text_field :lng, class: 'form-control' %>
+    </div>
 
-    <%= f.submit %>
+    <div class="action">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
   <% end %>
 </div>
