@@ -4,7 +4,7 @@ class Admin::StoresController < Admin::BaseController
   before_action :set_store, only: [:show, :edit, :update, :destroy]
   
   def index 
-    @stores = Store.where(nil)
+    @stores = Store.where(nil).paginate(page: params[:page])
   end
 
   def show

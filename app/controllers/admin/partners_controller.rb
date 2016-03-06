@@ -6,7 +6,7 @@ class Admin::PartnersController < Admin::BaseController
   ]
 
   def index 
-    @partners = Partner.where(nil)
+    @partners = Partner.where(nil).paginate(page: params[:page])
   end
 
   def show

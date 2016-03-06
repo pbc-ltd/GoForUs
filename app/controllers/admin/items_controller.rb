@@ -5,7 +5,7 @@ class Admin::ItemsController < Admin::BaseController
   ]
   
   def index 
-    @items = @order.items
+    @items = @order.items.paginate(page: params[:page])
   end
 
   def show

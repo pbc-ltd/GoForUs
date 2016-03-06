@@ -1,7 +1,21 @@
 <%= content_for :page_title, "Order(#{@order.id}) - Items" %>
 
 <div class="container">
-  <table class="table">
+  <div class="row">
+    <div class="admin_pagination">
+      <div class="page_info">
+        <%= page_entries_info @items %>
+      </div>
+
+      <div class='page_numbers'>
+        <%= will_paginate @items, container: false %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>ID</th>

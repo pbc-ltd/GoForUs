@@ -6,7 +6,7 @@ class Admin::CustomersController < Admin::BaseController
   ]
   
   def index 
-    @customers = Customer.where(nil)
+    @customers = Customer.where(nil).paginate(page: params[:page])
   end
 
   def show
