@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'about'   => 'pages#about'
   get 'contact' => 'pages#contact'
 
+  mount Blogit::Engine => '/blog'
+
   get 'admin'  => 'admin/dashboard#index'
   get 'admin/' => 'admin/dashboard#index'
 

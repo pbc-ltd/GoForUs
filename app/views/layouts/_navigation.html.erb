@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to root_path, class: 'navbar-brand' do %>
+      <%= link_to base_application.root_path, class: 'navbar-brand' do %>
         <i class="fa fa-power-off"></i> <span>Go</span>for<span>Us</span>
       <% end %>
     </div>
@@ -17,9 +17,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="main-navigation">
       <ul class="nav navbar-left navbar-nav">
-        <%= navigation_list_item_link_to 'Home',    root_path %>
-        <%= navigation_list_item_link_to 'About',   about_path %>
-        <%= navigation_list_item_link_to 'Contact', contact_path %>
+        <%= navigation_list_item_link_to 'Home',    base_application.root_path %>
+        <%= navigation_list_item_link_to 'Blog',    blog_application.blog_root_path %>
+        <%= navigation_list_item_link_to 'About',   base_application.about_path %>
+        <%= navigation_list_item_link_to 'Contact', base_application.contact_path %>
       </ul>
     </div><!-- /.navbar-collapse -->		
   </div>

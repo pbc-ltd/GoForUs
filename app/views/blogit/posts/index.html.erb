@@ -1,0 +1,55 @@
+<% content_for :page_title do %>
+    <i class="fa fa-pencil"></i>  Blog
+<% end %>
+
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9">
+        <% if params[:tag] %>
+          <h2 class="blogit_header--page">
+            <%= t(:showing_posts_tagged_with, scope: "blogit.posts", tag: params[:tag])  %>
+          </h2>
+        <% end %>
+
+
+        <% if @posts.any? %>
+          <%= render partial: "blogit/posts/post",
+            collection: @posts,
+            locals: { 
+              show_comments_count: (Blogit.configuration.include_comments == :active_records) 
+            }  %>
+        <% else %>
+          <%= render partial: "blogit/posts/empty" %>
+        <% end %>
+      </div>
+
+      <!-- start: Sidebar -->
+      <div class="col-sm-3 hidden-phone">
+        <!-- start: Tags -->
+        <div class="widget">
+          <div class="title"><h3>Tags</h3></div>
+          <div class="tags">
+            <a href="blog.html#">Tag1</a>
+            <a href="blog.html#">Tag2</a>
+            <a href="blog.html#">Tag3</a>
+            <a href="blog.html#">Tag4</a>
+            <a href="blog.html#">Tag5</a>
+            <a href="blog.html#">Tag6</a>
+            <a href="blog.html#">Tag7</a>
+            <a href="blog.html#">Tag8</a>
+            <a href="blog.html#">Tag9</a>
+            <a href="blog.html#">Tag10</a>
+            <a href="blog.html#">Tag11</a>
+            <a href="blog.html#">Tag12</a>
+          </div>
+        </div>
+        <!-- end: Tags -->
+
+      </div>
+      <!-- end: Sidebar -->
+    </div>
+
+    <%= render "pagination" %>
+  </div>
+</div>

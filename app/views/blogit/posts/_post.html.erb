@@ -1,0 +1,31 @@
+<div id="blogit_post_<%= post.id %>" class="post post-page">
+
+  <%# Render the header for this blog post %>
+  <%= render "blogit/posts/post_head", post: post %>
+  
+  
+  <%# Render the body of this blog post (as Markdown) %>
+  <div class="post-description">
+    <%= format_content(post.short_body) %>
+  </div>
+
+
+  <%= link_to('Read More...', post, class: "post-entry") %>
+
+  <div class="post-meta">
+    <span>
+      <i class="fa fa-calendar"></i><%= time_tag(post.created_at, pubdate: true, format: blogit_conf.datetime_format) %>
+    </span>
+
+    <span>
+      <i class="fa fa-user"></i>By <%= post.blogger_display_name %>
+    </span>
+
+    <% if defined?(show_comments_count) and show_comments_count %>
+      <span>
+        <i class="fa fa-comments"></i>With
+        <%= render "blogit/posts/comments_count", post: post %>
+      </span>
+    <% end %>
+  </div>
+</div>

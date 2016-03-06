@@ -23,6 +23,10 @@ gem 'devise'
 gem 'any_login'
 gem 'will_paginate', '~> 3.0.6'
 
+gem 'blogit'
+# Blogit depends on ActsAsTaggableOn
+gem 'acts-as-taggable-on'
+
 group :development, :test do
   gem 'byebug'
 end

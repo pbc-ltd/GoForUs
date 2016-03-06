@@ -1,0 +1,40 @@
+<% content_for :page_title, @post.title %>
+<% description @post.description.to_s %>
+
+<div class="wrapper">
+  <div class="container content">
+    <div class="row">
+      <div class="col-sm-9">
+        <%# Render the body of this blog post (as Markdown) %>
+        <%= format_content(@post.body) %>
+
+        <div class="post-meta">
+          <span>
+            <i class="fa fa-calendar"></i><%= time_tag(@post.created_at, pubdate: true, format: blogit_conf.datetime_format) %>
+        </span>
+
+        <span>
+          <i class="fa fa-user"></i>By <%= @post.blogger_display_name %>
+        </span>
+
+        <% if defined?(show_comments_count) and show_comments_count %>
+          <span>
+            <i class="fa fa-comments"></i>With
+            <%= render "blogit/posts/comments_count", post: @post %>
+          </span>
+        <% end %>
+
+        <%# Render info about the person who wrote this post %>
+        <%#= share_bar_for_post @post %>
+
+        <%## Render the no. of comments %>
+        <%#= render "blogit/posts/comments_count", post: post if defined?(show_comments_count) and show_comments_count %>
+
+        <%#= render "blogit/posts/tags", post: @post %>
+        <%#= render "blogit/posts/related", post: @post %>
+
+        <%#= comments_for_post @post %>
+      </div>
+    </div>
+  </div>
+</div>
