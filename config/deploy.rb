@@ -13,6 +13,8 @@ set :deploy_to, '/home/code/go_for_yous'
 # Default value for :scm is :git
 set :scm, :git
 
+#set :rvm_type, :system    # :user is the default
+
 # Default value for :format is :pretty
 # set :format, :pretty
 
