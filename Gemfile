@@ -32,6 +32,11 @@ group :development, :test do
 end
 
 group :development do
+  gem 'capistrano', '~> 3.4'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
