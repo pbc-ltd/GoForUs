@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'go_for_yous'
-set :repo_url, 'git@github.com:summergreenwhite/goforyous.git'
+set :repo_url, 'git@github.com:pbc-ltd/goforyous.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
