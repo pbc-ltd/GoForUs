@@ -16,11 +16,9 @@
       <div class="col-sm-9">
         <div id="footer-menu-links">
           <ul id="footer-nav">
-            <li><a href="index.html">Start</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><%= link_to 'About', base_application.about_path %></li>
+            <li><%= link_to 'Blog', blog_application.blog_root_path %></li>
+            <li><%= link_to 'Contact', base_application.contact_path %></li>
           </ul>
         </div>
       </div>
