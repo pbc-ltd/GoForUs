@@ -13,13 +13,13 @@
 
 /* Import Section
 =================================================================== */
-@import "social-icons.css";
-@import "hover.css";
-@import "fancybox.css";
-@import "font-awesome.css";
-@import "font-awesome-ie7.css";
-@import "glyphicons.css";
-@import "halflings.css";
+@import "<%= asset_path("social-icons.css") %>";
+@import "<%= asset_path("hover.css") %>";
+@import "<%= asset_path("fancybox.css") %>";
+@import "<%= asset_path("font-awesome.css") %>";
+@import "<%= asset_path("font-awesome-ie7.css") %>";
+@import "<%= asset_path("glyphicons.css") %>";
+@import "<%= asset_path("halflings.css") %>";
 
 .row {
   margin-right: -15px;
@@ -268,7 +268,7 @@ ul.disc {
   float: left;
 }
 #page-title {
-  background: url(/assets/slider.jpg);
+  background: url('<%= asset_path('slider.jpg') %>');
   display: block;
   margin-bottom: 25px;
   position: relative;
@@ -378,10 +378,10 @@ ul.disc {
   cursor: pointer;
 }
 .image-overlay-link {
-  background-image: url(/assets/overlay-icon-01.png);
+  background-image: url('<%= asset_path('overlay-icon-01.png') %>');
 }
 .image-overlay-zoom {
-  background-image: url(/assets/overlay-icon-02.png);
+  background-image: url('<%= asset_path('overlay-icon-02.png') %>');
 }
 .flex-video {
   position: relative;
@@ -517,13 +517,13 @@ html[xmlns] .slides {
   transition: all 0.1s ease-in-out;
 }
 .flex-direction-nav .flex-next {
-  background-image: url(/assets/slider-control-right.png);
+  background-image: url('<%= asset_path('slider-control-right.png') %>');
   background-repeat: no-repeat;
   background-position: 52% 50%;
 }
 .flex-direction-nav .flex-prev {
   margin-right: 36px;
-  background-image: url(/assets/slider-control-left.png);
+  background-image: url('<%= asset_path('slider-control-left.png') %>');
   background-repeat: no-repeat;
   background-position: 48% 50%;
 }
@@ -843,7 +843,7 @@ input[type="button"] {
   box-shadow: 0px 1px 1px 0px rgba(180, 180, 180, 0.1);
 }
 .carousel .testimonial .testimonials-bg {
-  background: url(/assets/testimonials-bg.png) no-repeat;
+  background: url('<%= asset_path('testimonials-bg.png') %>') no-repeat;
   margin-top: -1px;
   display: block;
   width: 200px;
@@ -883,13 +883,13 @@ input[type="button"] {
   margin-top: -40px;
 }
 .mr-rotato-next {
-  background: url(/assets/testimonials-right-01.png) no-repeat 50%;
+  background: url('<%= asset_path('testimonials-right-01.png') %>') no-repeat 50%;
   background-color: white;
   right: -1px;
   z-index: 6;
 }
 .mr-rotato-prev {
-  background: url(/assets/testimonials-left-01.png) no-repeat 50%;
+  background: url('<%= asset_path('testimonials-left-01.png') %>') no-repeat 50%;
   background-color: white;
   right: 25px;
   -webkit-box-shadow: 3px 0px 0px 0px #ffffff;
@@ -898,10 +898,10 @@ input[type="button"] {
   z-index: 5;
 }
 .mr-rotato-next:hover {
-  background: url(/assets/testimonials-right-02.png) no-repeat 50%;
+  background: url('<%= asset_path('testimonials-right-02.png')%>') no-repeat 50%;
 }
 .mr-rotato-prev:hover {
-  background: url(/assets/testimonials-left-02.png) no-repeat 50%;
+  background: url('<%= asset_path('testimonials-left-02.png') %>') no-repeat 50%;
 }
 .mr-rotato-prev:hover,
 .mr-rotato-next:hover {
@@ -1090,7 +1090,7 @@ ul.skills li .animate > span > spans li.current {
   width: 100%;
   float: none !important;
   margin: 0px auto !important;
-  /*filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
+  /*filter: url('<%= asset_path('filters.svg#grayscale') %>'); /* Firefox 3.5+ */
 
   filter: gray;
   /* IE6-9 */
@@ -1666,35 +1666,35 @@ li.current {
   margin: 5px 0;
 }
 .check_list li {
-  background: url(/assets/icons/list/blue/list_check.png) no-repeat 0% 50%;
+  background: url('<%= asset_path('icons/list/blue/list_check.png') %>') no-repeat 0% 50%;
   padding: 0 0 0 18px;
 }
 .plus_list li {
-  background: url(/assets/icons/list/blue/list_plus.png) no-repeat 0% 50%;
+  background: url('<%= asset_path('icons/list/blue/list_plus.png') %>') no-repeat 0% 50%;
   padding: 0 0 0 18px;
 }
 .minus_list li {
-  background: url(/assets/icons/list/blue/list_minus.png) no-repeat 0% 50%;
+  background: url('<%= asset_path('icons/list/blue/list_minus.png') %>') no-repeat 0% 50%;
   padding: 0 0 0 18px;
 }
 .star_list li {
-  background: url(/assets/icons/list/blue/list_star.png) no-repeat 0% 50%;
+  background: url('<%= asset_path('/assets/icons/list/blue/list_star.png') %>') no-repeat 0% 50%;
   padding: 0 0 0 16px;
 }
 .arrow_list li {
-  background: url(/assets/icons/list/blue/list_arrow.png) no-repeat 0% 50%;
+  background: url('<%= asset_path('icons/list/blue/list_arrow.png') %>') no-repeat 0% 50%;
   padding: 0 0 0 16px;
 }
 .square_list li {
-  background: url(/assets/icons/list/blue/list_square.png) no-repeat 0% 50%;
+  background: url('<%= asset_path('icons/list/blue/list_square.png') %>') no-repeat 0% 50%;
   padding: 0 0 0 16px;
 }
 .circle_list li {
-  background: url(/assets/icons/list/blue/list_circle.png) no-repeat 0% 50%;
+  background: url('<%= asset_path('icons/list/blue/list_circle.png') %>') no-repeat 0% 50%;
   padding: 0 0 0 16px;
 }
 .cross_list li {
-  background: url(/assets/icons/list/blue/list_cross.png) no-repeat 0% 50%;
+  background: url('<%= asset_path('icons/list/blue/list_cross.png') %>') no-repeat 0% 50%;
   padding: 0 0 0 16px;
 }
 /* Contact Form
@@ -1880,7 +1880,7 @@ li.current {
 ====================================================================== */
 #footer-menu {
   height: 60px;
-  background: #fcfcfc url(/assets/bg-k20.png) repeat;
+  background: #fcfcfc url('<%= asset_path('bg-k20.png') %>') repeat;
   border-top: 4px solid #f6f6f6;
   border-bottom: 4px solid #f6f6f6;
   margin-top: 20px;
@@ -1942,7 +1942,7 @@ li.current {
   height: 30px;
   display: block;
   background-color: #29a9df;
-  background-image: url(/assets/scroll-top-top.png);
+  background-image: url('<%= asset_path('scroll-top-top.png') %>');
   background-repeat: no-repeat;
   background-position: 50%;
   -webkit-transition: all 0.1s ease-in-out;
@@ -1955,7 +1955,7 @@ li.current {
   background-color: #aaa;
 }
 #footer {
-  background: url(/assets/bg-k10.png) repeat;
+  background: url('<%= asset_path('bg-k10.png') %>') repeat;
   border-bottom: 4px solid #f6f6f6;
   color: #666666 !important;
   padding: 40px 0px;
@@ -2041,14 +2041,14 @@ form#newsletter button {
   display: block;
   padding: 3px 0;
   padding-left: 12px;
-  background: url(/assets/links-list-arrow-01.png) no-repeat left 47%;
+  background: url('<%= asset_path('links-list-arrow-01.png') %>') no-repeat left 47%;
 }
 .links-list-alt li a {
   color: #666666;
   display: block;
   padding: 3px 0;
   padding-left: 12px;
-  background: url(/assets/links-list-arrow-02.png) no-repeat left 47%;
+  background: url('<%= asset_path('links-list-arrow-02.png') %>') no-repeat left 47%;
 }
 .links-list li a:hover {
   color: #efe9d8;

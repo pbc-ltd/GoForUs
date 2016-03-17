@@ -7,8 +7,8 @@
  */
 @font-face {
   font-family: 'Glyphicons Regular';
-  src: url('/assets/glyphicons-regular.eot');
-  src: url('/assets/glyphicons-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-regular.woff') format('woff'), url('/assets/glyphicons-regular.ttf') format('truetype'), url('/assets/glyphicons-regular.svg#glyphiconsregular') format('svg');
+  src: url('<%= asset_path('fonts/glyphicons-regular.eot') %>');
+  src: url('<%= asset_path('fonts/glyphicons-regular.eot?#iefix') %>') format('embedded-opentype'), url('<%= asset_path('fonts/glyphicons-regular.woff') %>') format('woff'), url('<%= asset_path('fonts/glyphicons-regular.ttf') %>') format('truetype'), url('<%= asset_path('fonts/glyphicons-regular.svg#glyphiconsregular') %>') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -1458,7 +1458,7 @@
   margin: 0 8px 0 0;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url(/assets/glyphicons.svg);
+  background-image: url('<%= asset_path('glyphicons.svg')%>');
   background-position: 0 0;
   background-repeat: no-repeat;
   vertical-align: top;
@@ -1468,20 +1468,20 @@
 }
 .glyphicons-icon _:-o-prefocus,
 .glyphicons-icon {
-  background-image: url(/assets/glyphicons.png);
+  background-image: url('<%= asset_path('glyphicons.png')%>');
 }
 .no-inlinesvg .glyphicons-icon {
-  background-image: url(/assets/glyphicons.png);
+  background-image: url('<%= asset_path('glyphicons.png')%>');
 }
 .glyphicons-icon.white {
-  background-image: url(/assets/glyphicons-white.svg);
+  background-image: url('<%= asset_path('glyphicons-white.svg')%>');
 }
 .glyphicons-icon.white _:-o-prefocus,
 .glyphicons-icon.white {
-  background-image: url(/assets/glyphicons-white.png);
+  background-image: url('<%= asset_path('glyphicons-white.png')%>');
 }
 .no-inlinesvg .glyphicons-icon.white {
-  background-image: url(/assets/glyphicons-white.png);
+  background-image: url('<%= asset_path('glyphicons-white.png')%>');
 }
 .glyphicons-icon.glass {
   background-position: 4px 11px;

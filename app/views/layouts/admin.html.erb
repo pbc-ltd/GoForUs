@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang='en' class="csstransforms csstransforms3d csstransitions js cssanimations csstransitions">
+<html lang='en'>
   <head>
     <title>GoForUs | Admin</title>
-    <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -18,15 +17,14 @@
     <meta property="og:image" content=""/>
     <!-- end: Facebook Open Graph -->
 
-    <link href="/assets/bootstrap1.css" rel="stylesheet">
-    <link href="/assets/style.css" rel="stylesheet">
-    <link href="/assets/parallax-slider.css" rel="stylesheet">
-    <link href="/assets/pagination.css" rel="stylesheet">
+    <%= stylesheet_link_tag  'bootstrap1' %>
+    <%= stylesheet_link_tag  'style' %>
+    <%= stylesheet_link_tag  'parallax-slider' %>
 
     <!--[if lt IE 9]>
 
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-      <script src="/assets/respond.min.js"></script>
+      <%= javascript_include_tag 'respond.min' %>
 
     <![endif]-->
 
@@ -37,48 +35,43 @@
   </head>
 
   <body>
-    <!-- start: Navigation -->
     <%= render 'admin/navigation' %>
-    <!-- end: Navigation -->
 
-    <!-- start: Page Title-->
-    <div id="container-top"></div>
-    <div id="page-title">
-      <div id="page-title-inner">
-        <div class="container">
-          <h2><%= yield :page_title %></h2>
+    <% unless yield(:page_title).empty? %>
+      <!-- start: Page Title-->
+      <div id="container-top"></div>
+      <div id="page-title">
+        <div id="page-title-inner">
+          <div class="container">
+            <h2><%= yield :page_title %></h2>
+          </div>
         </div>
-      </div>	
-    </div>
-    <div id="container-bottom"></div>
-    <!-- end: Page Title-->
+      </div>
+      <div id="container-bottom"></div>
+      <!-- end: Page Title-->
+    <% end %>
 
-    <!-- start: Main Content -->
     <%= yield %>
-    <!-- end: Main Content -->
 
-    <!-- start: Javascript -->
+    <!-- start: Java Script -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'jquery-1.9.1.min' %>
+    <%= javascript_include_tag 'bootstrap' %>
+    <%= javascript_include_tag 'jquery.isotope.min' %>
+    <%= javascript_include_tag 'jquery.imagesloaded' %>
+    <%= javascript_include_tag 'flexslider' %>
+    <%= javascript_include_tag 'carousel' %>
+    <%= javascript_include_tag 'jquery.cslider' %>
+    <%= javascript_include_tag 'slider' %>
+    <%= javascript_include_tag 'jquery.fancybox' %>
 
-    <script src="/assets/bootstrap.js"></script>
-    <script src="/assets/jquery.isotope.min.js"></script>
-    <script src="/assets/jquery.imagesloaded.js"></script>
-    <script src="/assets/flexslider.js"></script>
-    <script src="/assets/carousel.js"></script>
-    <script src="/assets/jquery.cslider.js"></script>
-    <script src="/assets/slider.js"></script>
-    <script src="/assets/jquery.fancybox.js"></script>
+    <%= javascript_include_tag 'excanvas' %>
+    <%= javascript_include_tag 'jquery.flot' %>
+    <%= javascript_include_tag 'jquery.flot.pie.min' %>
+    <%= javascript_include_tag 'jquery.flot.stack' %>
+    <%= javascript_include_tag 'jquery.flot.resize.min' %>
 
-    <script src="/assets/excanvas.js"></script>
-    <script src="/assets/jquery.flot.js"></script>
-    <script src="/assets/jquery.flot.pie.min.js"></script>
-    <script src="/assets/jquery.flot.stack.js"></script>
-    <script src="/assets/jquery.flot.resize.min.js"></script>
-
-    <script src="/assets/custom.js"></script>
-    <!-- end: Javascript -->
-
+    <%= javascript_include_tag 'custom' %>
+    <!-- end: Java Script -->
   </body>
-
 </html>

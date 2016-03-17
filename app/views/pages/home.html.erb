@@ -1,15 +1,12 @@
 <!-- start: Slider -->
 <div class="slider-wrapper">
-
   <div id="da-slider" class="da-slider">
-    <div class="da-slide"></div>
-    <div class="da-slide"></div>
-    <div class="da-slide"></div>
-    <div class="da-slide"></div>
-    <div class="da-slide"></div>
-    <div class="da-slide"></div>
-    <div class="da-slide"></div>
-    <div class="da-slide"></div>
+    <div class="da-slide">
+      <h2></h2>
+      <p></p>
+      <a href="#" class="da-link">Read more</a>
+      <div class="da-img"></div>
+    </div>
     <nav class="da-arrows">
       <span class="da-arrows-prev"></span>
       <span class="da-arrows-next"></span>
@@ -30,8 +27,8 @@
       <div class="row">
         <div class="col-sm-4">
           <div class="picture">
-            <a href="/assets/home_cinema.jpg" rel="image" title="Home Cinema System">
-              <img src="/assets/home_cinema.jpg" alt="" style="height: 175px;">
+            <a href="<%= asset_path('home_cinema.jpg') %>" rel="image" title="Home Cinema System">
+              <%= image_tag('home_cinema.jpg', style: 'height: 175px;') %>
               <div class="image-overlay-zoom"></div>
             </a>
           </div>
@@ -44,8 +41,8 @@
 
         <div class="col-sm-4">
           <div class="picture">
-            <a href="/assets/home_cinema.jpg" rel="image" title="Home Cinema System">
-              <img src="/assets/home_cinema.jpg" alt="" style="height: 175px;">
+            <a href="<%= asset_path('home_cinema.jpg') %>" rel="image" title="Home Cinema System">
+              <%= image_tag('home_cinema.jpg', style: 'height: 175px;') %>
               <div class="image-overlay-zoom"></div>
             </a>
           </div>
@@ -58,8 +55,8 @@
 
         <div class="col-sm-4">
           <div class="picture">
-            <a href="/assets/home_cinema.jpg" rel="image" title="Home Cinema System">
-              <img src="/assets/home_cinema.jpg" alt="" style="height: 175px;">
+            <a href="<%= asset_path('home_cinema.jpg') %>" rel="image" title="Home Cinema System">
+              <%= image_tag('home_cinema.jpg', style: 'height: 175px;') %>
               <div class="image-overlay-zoom"></div>
             </a>
           </div>
@@ -85,6 +82,12 @@
               <div class="testimonials-bg"></div>
               <div class="testimonials-author">Joe Blogs, <span>Customer</span></div>
             </li>
+
+            <li class="testimonial">
+              <div class="testimonials">Without reservation I would say that the services we have received have been of a consistently high standard with an attention to detail which is excellent. Like all home owners, we rely heavily upon our technology. In particular, I would note that in “emergency situations” the response time has been suitably short on all occasions</div>
+              <div class="testimonials-bg"></div>
+              <div class="testimonials-author">Joe Blogs, <span>Customer</span></div>
+            </li>
           </ul>
         </div>
       </div>
@@ -94,29 +97,29 @@
 
   <hr>
 
-  <!-- start Clients List -->	
+  <!-- start Clients List -->
   <div class="clients-carousel">
     <ul class="slides clients">
-      <li><img src="/assets/logos/1.png" alt=""/></li>
-      <li><img src="/assets/logos/2.png" alt=""/></li>	
-      <li><img src="/assets/logos/3.png" alt=""/></li>
-      <li><img src="/assets/logos/4.png" alt=""/></li>
-      <li><img src="/assets/logos/5.png" alt=""/></li>
-      <li><img src="/assets/logos/6.png" alt=""/></li>
-      <li><img src="/assets/logos/7.png" alt=""/></li>
-      <li><img src="/assets/logos/8.png" alt=""/></li>
-      <li><img src="/assets/logos/9.png" alt=""/></li>
-      <li><img src="/assets/logos/10.png" alt=""/></li>
-      <li><img src="/assets/logos/1.png" alt=""/></li>
-      <li><img src="/assets/logos/2.png" alt=""/></li>	
-      <li><img src="/assets/logos/3.png" alt=""/></li>
-      <li><img src="/assets/logos/4.png" alt=""/></li>
-      <li><img src="/assets/logos/5.png" alt=""/></li>
-      <li><img src="/assets/logos/6.png" alt=""/></li>
-      <li><img src="/assets/logos/7.png" alt=""/></li>
-      <li><img src="/assets/logos/8.png" alt=""/></li>
-      <li><img src="/assets/logos/9.png" alt=""/></li>
-      <li><img src="/assets/logos/10.png" alt=""/></li>	
+      <li><%= image_tag("logos/1.png") %></li>
+      <li><%= image_tag("logos/2.png") %></li>
+      <li><%= image_tag("logos/3.png") %></li>
+      <li><%= image_tag("logos/4.png") %></li>
+      <li><%= image_tag("logos/5.png") %></li>
+      <li><%= image_tag("logos/6.png") %></li>
+      <li><%= image_tag("logos/7.png") %></li>
+      <li><%= image_tag("logos/8.png") %></li>
+      <li><%= image_tag("logos/9.png") %></li>
+      <li><%= image_tag("logos/10.png") %></li>
+      <li><%= image_tag("logos/1.png") %></li>
+      <li><%= image_tag("logos/2.png") %></li>
+      <li><%= image_tag("logos/3.png") %></li>
+      <li><%= image_tag("logos/4.png") %></li>
+      <li><%= image_tag("logos/5.png") %></li>
+      <li><%= image_tag("logos/6.png") %></li>
+      <li><%= image_tag("logos/7.png") %></li>
+      <li><%= image_tag("logos/8.png") %></li>
+      <li><%= image_tag("logos/9.png") %></li>
+      <li><%= image_tag("logos/10.png") %></li>
     </ul>
   </div>
   <!-- end Clients List -->
