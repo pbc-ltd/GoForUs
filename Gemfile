@@ -19,18 +19,11 @@ gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 gem 'devise'
-gem 'any_login'
-gem 'will_paginate', '~> 3.0.6'
+gem 'kaminari'
 
-gem 'blogit'
 # Blogit depends on ActsAsTaggableOn
+gem 'blogit'
 gem 'acts-as-taggable-on'
 
 group :development, :test do
@@ -39,11 +32,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'capistrano', '~> 3.4'
-  #gem 'capistrano-rvm'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano-passenger'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end

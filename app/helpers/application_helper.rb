@@ -6,4 +6,8 @@ module ApplicationHelper
   def blog_application
     Blogit::Engine.routes.url_helpers
   end
+
+  def current_url
+    request.base_url + request.original_fullpath
+  end
 end
