@@ -7,8 +7,8 @@
  */
 @font-face {
   font-family: 'Glyphicons Social Regular';
-  src: url('/assets/glyphicons-social-regular.eot');
-  src: url('/assets/glyphicons-social-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-social-regular.woff') format('woff'), url('/assets/glyphicons-social-regular.ttf') format('truetype'), url('/assets/glyphicons-social-regular.svg#glyphicons_socialregular') format('svg');
+  src: url('glyphicons-social-regular.eot');
+  src: url('glyphicons-social-regular.eot?#iefix') format('embedded-opentype'), url('glyphicons-social-regular.woff') format('woff'), url('glyphicons-social-regular.ttf') format('truetype'), url('glyphicons-social-regular.svg#glyphicons_socialregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -198,7 +198,7 @@
   margin: 0 8px 0 0;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url(/assets/glyphicons_social.svg);
+  background-image: url('<%= asset-path('glyphicons_social.svg') %>');
   background-position: 0 0;
   background-repeat: no-repeat;
   vertical-align: top;
@@ -208,20 +208,20 @@
 }
 .social-icon _:-o-prefocus,
 .social-icon {
-  background-image: url(/assets/glyphicons_social.png);
+  background-image: url('<%= asset_path('glyphicons_social.png') %>');
 }
 .no-inlinesvg .social-icon {
-  background-image: url(/assets/glyphicons_social.png);
+  background-image: url('<%= asset_path('glyphicons_social.png') %>');
 }
 .social-icon.white {
-  background-image: url(/assets/glyphicons_social-white.svg);
+  background-image: url('<%= asset_path('glyphicons_social-white.svg') %>');
 }
 .social-icon.white _:-o-prefocus,
 .social-icon.white {
-  background-image: url(/assets/glyphicons_social-white.png);
+  background-image: url('<%= asset_path('glyphicons_social-white.png') %>');
 }
 .no-inlinesvg .social-icon.white {
-  background-image: url(/assets/glyphicons_social-white.png);
+  background-image: url('<%= asset_path('glyphicons_social-white.png') %>');
 }
 .social-icon.pinterest {
   background-position: 0px 0px;
