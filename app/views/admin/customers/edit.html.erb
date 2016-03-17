@@ -4,16 +4,17 @@
   <%= form_for @customer, url: admin_customer_path(@customer) do |f| %>
 
     <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :mobile_number, class: 'form-control' %>
-  </div>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
 
-  <div class="action">
-    <%= f.submit class: 'btn btn-primary' %>
-  </div>
-<% end %>
+    <div class="form-group">
+      <%= f.label :mobile_number %>
+      <%= f.text_field :mobile_number, class: 'form-control' %>
+    </div>
+
+    <div class="action">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
 </div>

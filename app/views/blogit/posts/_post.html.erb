@@ -21,6 +21,14 @@
       <i class="fa fa-user"></i>By <%= post.blogger_display_name %>
     </span>
 
+
+    <% if admin_signed_in? %>
+      <% label_type = Blogit.configuration.active_states.include?(post.state.to_sym) ? 'success' : 'warning' %>
+      <span class="label label-<%= label_type %>">[<%= post.state %>]</span>
+      <span><%= link_to 'Edit Post', base_application.edit_admin_post_path(post.id), class: 'btn btn-xs btn-primary' %></span>
+      <span><%= link_to 'Delete Post', base_application.admin_post_path(post.id), class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure you wanting to delete this post?'}, method: :delete %></span>
+    <% end %>
+
     <% if defined?(show_comments_count) and show_comments_count %>
       <span>
         <i class="fa fa-comments"></i>With

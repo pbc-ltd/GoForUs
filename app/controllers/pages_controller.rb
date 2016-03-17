@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @posts = Blogit::Post.for_feed.last(3)
+    @posts = Blogit::Post.active.last(3).reverse
   end
 
   def about

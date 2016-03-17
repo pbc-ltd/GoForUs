@@ -1,0 +1,37 @@
+<div class="container content">
+
+
+  <%= form_for @post, url: @post.id ? admin_post_path(@post) : admin_posts_path do |f| %>
+    <% form_errors_for @post %>
+    <%= yield :form_errors %>
+
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_field :description,  class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :body %>
+      <%= f.text_area :body,  class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :tag_list %>
+      <%= f.text_field :tag_list,  class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :state %>
+      <%= f.select :state, (Blogit.configuration.active_states + Blogit.configuration.hidden_states).select{|s| [s,s] }, include_blank: false, class: 'form-control' %>
+    </div>
+
+    <div class="action">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
+<% end %>
+</div>

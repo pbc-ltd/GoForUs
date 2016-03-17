@@ -1,23 +1,26 @@
 <% content_for :page_title do %>
-    <i class="fa fa-pencil"></i>  Blog
+  <i class="fa fa-pencil"></i>  Blog
 <% end %>
 
 <div class="wrapper">
   <div class="container">
     <div class="row">
       <div class="col-sm-9">
+        <% if admin_signed_in? %>
+          <%= link_to 'Create Post', base_application.new_admin_post_path, class: 'btn btn-primary' %>
+        <% end %>
+
         <% if params[:tag] %>
           <h2 class="blogit_header--page">
             <%= t(:showing_posts_tagged_with, scope: "blogit.posts", tag: params[:tag])  %>
           </h2>
         <% end %>
 
-
         <% if @posts.any? %>
           <%= render partial: "blogit/posts/post",
             collection: @posts,
-            locals: { 
-              show_comments_count: (Blogit.configuration.include_comments == :active_records) 
+            locals: {
+              show_comments_count: (Blogit.configuration.include_comments == :active_records)
             }  %>
         <% else %>
           <%= render partial: "blogit/posts/empty" %>
@@ -28,20 +31,13 @@
       <div class="col-sm-3 hidden-phone">
         <!-- start: Tags -->
         <div class="widget">
-          <div class="title"><h3>Tags</h3></div>
+          <div class="title">
+            <h3>Tags<span style="margin-left: 10px;"><%= link_to 'reset', blog_application.posts_path, class: 'btn btn-xs btn-info' %></span></h3>
+          </div>
           <div class="tags">
-            <a href="blog.html#">Tag1</a>
-            <a href="blog.html#">Tag2</a>
-            <a href="blog.html#">Tag3</a>
-            <a href="blog.html#">Tag4</a>
-            <a href="blog.html#">Tag5</a>
-            <a href="blog.html#">Tag6</a>
-            <a href="blog.html#">Tag7</a>
-            <a href="blog.html#">Tag8</a>
-            <a href="blog.html#">Tag9</a>
-            <a href="blog.html#">Tag10</a>
-            <a href="blog.html#">Tag11</a>
-            <a href="blog.html#">Tag12</a>
+            <% ActsAsTaggableOn::Tagging.includes(:tag).all.where(context: 'tags').uniq.pluck(:name).each do |_tag| %>
+              <%= link_to _tag, blog_application.tagged_blog_posts_path(tag: _tag) %>
+            <% end %>
           </div>
         </div>
         <!-- end: Tags -->

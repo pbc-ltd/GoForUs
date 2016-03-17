@@ -10,4 +10,9 @@ module ApplicationHelper
   def current_url
     request.base_url + request.original_fullpath
   end
+
+  # Displays object errors
+  def form_errors_for(object=nil)
+    render(partial: 'shared/form_errors', locals: {  object: object }) unless object.blank?
+  end
 end

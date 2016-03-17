@@ -58,5 +58,4 @@ Blogit.configure do |config|
 
   # List of states that will hide the posts from the public.
   config.hidden_states = [:draft, :archive]
-
 end
