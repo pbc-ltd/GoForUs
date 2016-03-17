@@ -20,85 +20,93 @@
 <!--start: Container -->
 <div class="container">
   <div class="row">
-    <!-- start: Lastest Work -->
-    <div class="col-sm-9">
+    <!-- start: Lastest Updated -->
+    <div class="col-sm-8">
       <div class="title"><h3>Lastest Updates</h3></div>
-
-      <!--<div class="row">
-        <div class="col-sm-4">
-          <div class="picture">
-            <a href="<%= asset_path('home_cinema.jpg') %>" rel="image" title="Home Cinema System">
-              <%= image_tag('home_cinema.jpg', style: 'height: 175px;') %>
-              <div class="image-overlay-zoom"></div>
-            </a>
-          </div>
-          <div class="item-description">
-            <h4><a href="/">Home Cinema System</a></h4>
-            <p>There's a lot to love about TV shows and movies. Especially the sound. With the SoundTouch 130 home cinema system, the 94 cm sound bar delivers clear, spacious sound all across your room, while the wireless Acoustimass module provides impactful bass.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-sm-4">
-          <div class="picture">
-            <a href="<%= asset_path('home_cinema.jpg') %>" rel="image" title="Home Cinema System">
-              <%= image_tag('home_cinema.jpg', style: 'height: 175px;') %>
-              <div class="image-overlay-zoom"></div>
-            </a>
-          </div>
-          <div class="item-description">
-            <h4><a href="/">Home Cinema System</a></h4>
-            <p>There's a lot to love about TV shows and movies. Especially the sound. With the SoundTouch 130 home cinema system, the 94 cm sound bar delivers clear, spacious sound all across your room, while the wireless Acoustimass module provides impactful bass.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-sm-4">
-          <div class="picture">
-            <a href="<%= asset_path('home_cinema.jpg') %>" rel="image" title="Home Cinema System">
-              <%= image_tag('home_cinema.jpg', style: 'height: 175px;') %>
-              <div class="image-overlay-zoom"></div>
-            </a>
-          </div>
-          <div class="item-description">
-            <h4><a href="/">Home Cinema System</a></h4>
-            <p>There's a lot to love about TV shows and movies. Especially the sound. With the SoundTouch 130 home cinema system, the 94 cm sound bar delivers clear, spacious sound all across your room, while the wireless Acoustimass module provides impactful bass.
-            </p>
-          </div>
-        </div>
-      </div>-->
-
     </div>
-    <!-- end: Lastest Work -->
+    <!-- end: Lastest Updates -->
 
-    <!-- start: Testimonials-->
-    <div class="col-sm-3">
-      <div class="testimonial-container">
-        <div class="title"><h3>What Customers Say</h3></div>
-        <div class="testimonials-carousel" data-autorotate="3000">
-          <ul class="carousel">
-            <li class="testimonial">
-              <div class="testimonials"></div>
-              <div class="testimonials-bg"></div>
-              <div class="testimonials-author">Joe Blogs, <span>Customer</span></div>
+    <div class="col-sm-4">
+      <!-- start: Stay Connected Social-->
+      <div id="stay-connected">
+        <div class="title"><h3>Stay Connected</h3></div>
+
+        <ul class="social-grid center-block">
+          <li>
+          <div class="social-item">
+            <div class="social-info-wrap">
+              <div class="social-info">
+                <div class="social-info-front social-twitter">
+                </div>
+                <div class="social-info-back social-twitter-hover">
+                  <%= link_to 'https://www.twiter.com/shoutsid06', target: '_BLANK' do %>
+                    <i class="fa"></i>
+                <% end %>
+                </div>
+              </div>
+            </div>
             </li>
-
-            <li class="testimonial">
-              <div class="testimonials"></div>
-              <div class="testimonials-bg"></div>
-              <div class="testimonials-author">Joe Blogs, <span>Customer</span></div>
+            <li>
+            <div class="social-item">
+              <div class="social-info-wrap">
+                <div class="social-info">
+                  <div class="social-info-front social-facebook">
+                  </div>
+                  <div class="social-info-back social-facebook-hover">
+                    <%= link_to 'https://www.facebook.com/goforus.ltd/', target: '_BLANK' do %>
+                      <i class="fa"></i>
+                  <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </li>
+            <li>
+            <div class="social-item">
+              <div class="social-info-wrap">
+                <div class="social-info">
+                  <div class="social-info-front social-github">
+                  </div>
+                  <div class="social-info-back social-github-hover">
+                    <%= link_to 'https://www.github.com/pbc-ltd', target: '_BLANK' do %>
+                      <i class="fa"></i>
+                  <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
             </li>
           </ul>
         </div>
+        <!-- end: Stay Connected Social-->
+
+        <!-- start: Testimonials-->
+        <div class="testimonial-container">
+          <div class="title"><h3>What Customers Say</h3></div>
+          <div class="testimonials-carousel" data-autorotate="3000">
+            <ul class="carousel">
+              <li class="testimonial">
+              <div class="testimonials"></div>
+              <div class="testimonials-bg"></div>
+              <div class="testimonials-author">Joe Blogs, <span>Customer</span></div>
+              </li>
+
+              <li class="testimonial">
+              <div class="testimonials"></div>
+              <div class="testimonials-bg"></div>
+              <div class="testimonials-author">Joe Blogs, <span>Customer</span></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- end: Testimonials-->
+
       </div>
-    </div>
-    <!-- end: Testimonials-->
-  </div>
 
-  <hr>
+      <hr>
 
-  <!-- start Clients List -->
-  <!--<div class="clients-carousel">
+      <!-- start Clients List -->
+      <!--<div class="clients-carousel">
     <ul class="slides clients">
       <li><%= image_tag("logos/1.png") %></li>
       <li><%= image_tag("logos/2.png") %></li>
@@ -122,7 +130,9 @@
       <li><%= image_tag("logos/10.png") %></li>
     </ul>
   </div>-->
-  <!-- end Clients List -->
+      <!-- end Clients List -->
 
-  <hr>
+      <hr>
+    </div>
+  </div>
 </div>

@@ -5,7 +5,9 @@
       <!-- start: Footer Menu Logo -->
       <div class="col-sm-2">
         <div id="footer-menu-logo">
-          <a class="brand" href="index.html#">Sma<span>rt</span>.</a>
+          <%= link_to base_application.root_path, class: 'brand' do %>
+            <%= image_tag 'pbc-logo.PNG', width: '20%' %> <span>Go</span>for<span>Us</span>
+        <% end %>
         </div>
       </div>
       <!-- end: Footer Menu Logo -->
@@ -27,123 +29,14 @@
       <!-- start: Footer Menu Back To Top -->
       <div class="col-sm-1">
         <div id="footer-menu-back-to-top">
-          <a href="index.html#"></a>
+          <a href="#"></a>
         </div>
       </div>
       <!-- end: Footer Menu Back To Top -->
     </div>
   </div>
-</div>	
-<!-- end: Footer Menu -->
-
-<!-- start: Footer -->
-<div id="footer">
-  <div class="container">
-    <div class="row">
-      <!-- start: About -->
-      <div class="col-sm-3">
-        <h3>About Us</h3>
-        <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-        </p>
-      </div>
-      <!-- end: About -->
-
-      <!-- start: Photo Stream -->
-      <div class="col-sm-3">
-        <h3>Photo Stream</h3>
-        <div class="flickr-widget">
-          <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=9&display=latest&size=s&layout=x&source=user&user=29609591@N08"></script>
-          <div class="clear"></div>
-        </div>
-      </div>
-      <!-- end: Photo Stream -->
-
-      <div class="col-sm-6">
-        <!-- start: Follow Us -->
-        <h3>Follow Us!</h3>
-        <ul class="social-grid">
-          <li>
-            <div class="social-item">				
-              <div class="social-info-wrap">
-                <div class="social-info">
-                  <div class="social-info-front social-twitter">
-                    <a href="http://twitter.com/BootstrapMaster"><i class="fa fa-twitter"></i></a>
-                  </div>
-                  <div class="social-info-back social-twitter-hover">
-                    <a href="http://twitter.com/BootstrapMaster"><i class="fa fa-twitter"></i></a>
-                  </div>	
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="social-item">				
-              <div class="social-info-wrap">
-                <div class="social-info">
-                  <div class="social-info-front social-facebook">
-                    <a href="http://facebook.com/BootstrapMaster"><i class="fa fa-facebook"></i></a>
-                  </div>
-                  <div class="social-info-back social-facebook-hover">
-                    <a href="http://facebook.com/BootstrapMaster"><i class="fa fa-facebook"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="social-item">				
-              <div class="social-info-wrap">
-                <div class="social-info">
-                  <div class="social-info-front social-dribbble">
-                    <a href="http://dribbble.com"><i class="fa fa-dribbble"></i></a>
-                  </div>
-                  <div class="social-info-back social-dribbble-hover">
-                    <a href="http://dribbble.com"><i class="fa fa-dribbble"></i></a>
-                  </div>	
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="social-item">				
-              <div class="social-info-wrap">
-                <div class="social-info">
-                  <div class="social-info-front social-flickr">
-                    <a href="http://flickr.com"><i class="fa fa-flickr"></i></a>
-                  </div>
-                  <div class="social-info-back social-flickr-hover">
-                    <a href="http://flickr.com"><i class="fa fa-flickr"></i></a>
-                  </div>	
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <!-- end: Follow Us -->
-
-        <!-- start: Newsletter -->
-        <h3>Newsletter</h3>
-        <form id="newsletter">
-          <p>Please leave us your email</p>
-          <div class="row">
-            <div class="col-lg-12">
-              <label>@:</label>
-              <div class="input-group">
-                <input type="text" class="form-control">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">Submit!</button>
-                </span>
-              </div>
-            </div>
-          </div>
-        </form>
-        <!-- end: Newsletter -->
-      </div>
-    </div>
-  </div>
 </div>
-<!-- end: Footer -->
+<!-- end: Footer Menu -->
 
 
 <!-- start: Copyright -->
@@ -151,7 +44,7 @@
   <div class="container">
     <div class="col-sm-12">
       <p>
-        &copy; 2016,  
+        &copy; 2016, GoForUs Ltd
       </p>
     </div>
   </div>
