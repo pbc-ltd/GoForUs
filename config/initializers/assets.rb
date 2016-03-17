@@ -23,4 +23,4 @@ Rails.application.config.assets.precompile += %w( style.css parallax-slider.css 
 Rails.application.config.assets.precompile += %w( jquery-1.9.1.min.js bootstrap.js jquery.isotope.min.js jquery.imagesloaded.js  )
 Rails.application.config.assets.precompile += %w( flexslider.js carousel.js jquery.cslider.js slider.js jquery.fancybox.js )
 Rails.application.config.assets.precompile += %w( excanvas.js jquery.flot.js jquery.flot.pie.min.js jquery.flot.stack.js jquery.flot.resize.min.js )
-Rails.application.config.assets.precompile += %w( custom.js )
+Rails.application.config.assets.precompile += %w( custom.js jquery.gmap.min.js )

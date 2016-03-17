@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   concern :activateable do
     post 'activate'
   end
@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   concern :deactivateable do
     post 'deactivate'
   end
-  
+
   root 'pages#home'
   get 'about'   => 'pages#about'
   get 'contact' => 'pages#contact'
+  get 'become_partner' => 'pages#become_partner'
 
   mount Blogit::Engine => '/blog'
 

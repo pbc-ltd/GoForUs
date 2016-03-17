@@ -10,7 +10,7 @@
         <span class="icon-bar"></span>
       </button>
       <%= link_to base_application.root_path, class: 'navbar-brand' do %>
-        <i class="fa fa-won"></i> <span>Go</span>for<span>You's</span>
+        <%= image_tag 'pbc-logo.PNG', width: '20%' %> <span>Go</span>for<span>You</span>
       <% end %>
     </div>
 
@@ -18,6 +18,7 @@
     <div class="collapse navbar-collapse" id="main-navigation">
       <ul class="nav navbar-left navbar-nav">
         <%= navigation_list_item_link_to 'Home',    base_application.root_path %>
+        <%= navigation_list_item_link_to 'Partners', base_application.become_partner_path %>
         <%= navigation_list_item_link_to 'Blog',    blog_application.blog_root_path %>
         <%= navigation_list_item_link_to 'About',   base_application.about_path %>
         <%= navigation_list_item_link_to 'Contact', base_application.contact_path %>
