@@ -2,8 +2,8 @@
 
   <%# Render the header for this blog post %>
   <%= render "blogit/posts/post_head", post: post %>
-  
-  
+
+
   <%# Render the body of this blog post (as Markdown) %>
   <div class="post-description">
     <%= format_content(post.short_body) %>

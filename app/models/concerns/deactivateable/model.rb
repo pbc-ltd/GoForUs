@@ -2,9 +2,6 @@ module Deactivateable
   module Model
     extend ActiveSupport::Concern
 
-    included do
-    end
-
     def destroy!
       deactivate!
     end

@@ -30,6 +30,26 @@
     <!-- start: Lastest Updated -->
     <div class="col-sm-8">
       <div class="title"><h3>Lastest Updates</h3></div>
+
+      <div id="portfolio-wrapper" class="row">
+        <% @posts.each do |post| %>
+          <div class="col-sm-4 portfolio-item">
+            <div class="picture">
+              <%= link_to blog_application.post_path(post.id) do %>
+                <%= image_tag 'pbc-logo.PNG' %><div class="image-overlay-link"></div>
+              <% end %>
+              <div class="item-description alt">
+                <h5><%= link_to post.title, blog_application.post_path(post.id) %></h5>
+                <p><%= truncate(post.short_body, length: 250) %></p>
+              </div>
+              <div class="post-meta">
+                <div><i class="fa fa-calendar"></i><%= post.created_at.strftime('%d %a %Y') %></div>
+                <div><i class="fa fa-user"></i><%= post.blogger_display_name %></div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
     <!-- end: Lastest Updates -->
 
@@ -89,7 +109,7 @@
 
         <!-- start: Testimonials-->
         <div class="testimonial-container">
-          <div class="title"><h3>What Customers Say</h3></div>
+          <div class="title"><h3>Customer Feedback</h3></div>
           <div class="testimonials-carousel" data-autorotate="3000">
             <ul class="carousel">
               <li class="testimonial">
