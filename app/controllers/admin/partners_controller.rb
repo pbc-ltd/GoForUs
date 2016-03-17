@@ -5,8 +5,8 @@ class Admin::PartnersController < Admin::BaseController
     :show, :edit, :update, :destroy
   ]
 
-  def index 
-    @partners = Partner.where(nil).paginate(page: params[:page])
+  def index
+    @partners = Partner.where(nil).page(params[:page])
   end
 
   def show

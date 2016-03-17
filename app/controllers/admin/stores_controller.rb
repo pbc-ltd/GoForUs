@@ -2,9 +2,9 @@ class Admin::StoresController < Admin::BaseController
   include ::Deactivateable::Controller
 
   before_action :set_store, only: [:show, :edit, :update, :destroy]
-  
-  def index 
-    @stores = Store.where(nil).paginate(page: params[:page])
+
+  def index
+    @stores = Store.where(nil).page(params[:page])
   end
 
   def show

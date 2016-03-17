@@ -1,8 +1,8 @@
 class Admin::InventoryController < Admin::BaseController
   before_action :set_store, only: [:index]
 
-  def index 
-    @inventory = Item.where(store: @store).paginate(page: params[:page])
+  def index
+    @inventory = Item.where(store: @store).page(params[:page])
   end
 
   private

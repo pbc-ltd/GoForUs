@@ -1,8 +1,8 @@
 class Admin::OrdersController < Admin::BaseController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  
-  def index 
-    @orders = Order.where(nil).paginate(page: params[:page])
+
+  def index
+    @orders = Order.where(nil).page(params[:page])
   end
 
   def show

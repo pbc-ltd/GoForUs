@@ -3,9 +3,9 @@ class Admin::ItemsController < Admin::BaseController
   before_action :set_item, only: [
     :show, :edit, :update, :destroy
   ]
-  
-  def index 
-    @items = @order.items.paginate(page: params[:page])
+
+  def index
+    @items = @order.items.page(params[:page])
   end
 
   def show

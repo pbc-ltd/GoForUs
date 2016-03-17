@@ -4,9 +4,9 @@ class Admin::CustomersController < Admin::BaseController
   before_action :set_customer, only: [
     :show, :edit, :update, :destroy
   ]
-  
-  def index 
-    @customers = Customer.where(nil).paginate(page: params[:page])
+
+  def index
+    @customers = Customer.where(nil).page(params[:page])
   end
 
   def show
