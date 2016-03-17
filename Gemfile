@@ -22,6 +22,8 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'kaminari'
 
+gem 'bootstrap_form'
+
 # Blogit depends on ActsAsTaggableOn
 gem 'blogit'
 gem 'acts-as-taggable-on'
