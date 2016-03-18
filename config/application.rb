@@ -22,5 +22,10 @@ module GoForUs
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    if ENV['LOCKOUT_ENABLED']
+      config.middleware.use '::Rack::Auth::Basic' do |u, p|
+        [u, p] == [ENV['LOCKOUT_USERNAME'], ENV['LOCKOUT_PASSWORD']]
+      end
+    end
   end
 end

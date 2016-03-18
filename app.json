@@ -17,12 +17,22 @@
     },
     "SECRET_KEY_BASE": {
       "generator": "secret"
+    },
+    "LOCKOUT_ENABLED": {
+      "value": true
+    },
+    "LOCKOUT_USERNAME": {
+      "value": "lockout"
+    },
+    w
+    "LOCKOUT_PASSWORD": {
+      "generator": "secret"
     }
   },
   "addons": [
     "logentries",
-  "heroku-postgresql"
-    ],
+    "heroku-postgresql"
+  ],
   "buildpacks": [{
     "url": "urn:buildpack:heroku/ruby"
   }]
