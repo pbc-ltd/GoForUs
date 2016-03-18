@@ -26,7 +26,7 @@ gem 'kaminari'
 gem 'bootstrap_form'
 
 # Blogit depends on ActsAsTaggableOn
-gem 'blogit'
+gem 'blogit', git: 'https://github.com/pbc-ltd/blogit.git'
 gem 'acts-as-taggable-on'
 
 group :development, :test do
