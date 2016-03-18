@@ -1,6 +1,7 @@
 {
-  "name": "master",
-  "scripts": {},
+  "name": "GoForUs",
+  "scripts": {
+  },
   "env": {
     "LANG": {
       "required": true
@@ -22,9 +23,7 @@
     "logentries",
   "heroku-postgresql"
     ],
-  "buildpacks": [
-  {
+  "buildpacks": [{
     "url": "urn:buildpack:heroku/ruby"
-  }
-  ]
+  }]
 }
