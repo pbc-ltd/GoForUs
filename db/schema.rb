@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160306165362) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -28,8 +31,8 @@ ActiveRecord::Schema.define(version: 20160306165362) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "admins", ["email"], name: "index_admins_on_email", unique: true
-  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
+  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "blogit_comments", force: :cascade do |t|
     t.string   "name",       null: false
@@ -42,7 +45,7 @@ ActiveRecord::Schema.define(version: 20160306165362) do
     t.datetime "updated_at"
   end
 
-  add_index "blogit_comments", ["post_id"], name: "index_blogit_comments_on_post_id"
+  add_index "blogit_comments", ["post_id"], name: "index_blogit_comments_on_post_id", using: :btree
 
   create_table "blogit_posts", force: :cascade do |t|
     t.string   "title",                            null: false
@@ -56,7 +59,7 @@ ActiveRecord::Schema.define(version: 20160306165362) do
     t.text     "description"
   end
 
-  add_index "blogit_posts", ["blogger_type", "blogger_id"], name: "index_blogit_posts_on_blogger_type_and_blogger_id"
+  add_index "blogit_posts", ["blogger_type", "blogger_id"], name: "index_blogit_posts_on_blogger_type_and_blogger_id", using: :btree
 
   create_table "customers", force: :cascade do |t|
     t.string   "mobile_number"
@@ -74,7 +77,7 @@ ActiveRecord::Schema.define(version: 20160306165362) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "items", ["store_id"], name: "index_items_on_store_id"
+  add_index "items", ["store_id"], name: "index_items_on_store_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "order_id"
@@ -83,8 +86,8 @@ ActiveRecord::Schema.define(version: 20160306165362) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id"
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
+  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.integer  "partner_id"
@@ -93,8 +96,8 @@ ActiveRecord::Schema.define(version: 20160306165362) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id"
-  add_index "orders", ["partner_id"], name: "index_orders_on_partner_id"
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
+  add_index "orders", ["partner_id"], name: "index_orders_on_partner_id", using: :btree
 
   create_table "partners", force: :cascade do |t|
     t.string   "name"
@@ -127,14 +130,19 @@ ActiveRecord::Schema.define(version: 20160306165362) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
+  add_foreign_key "items", "stores"
+  add_foreign_key "order_items", "items"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "customers"
+  add_foreign_key "orders", "partners"
 end
