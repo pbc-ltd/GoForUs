@@ -10,6 +10,7 @@ class Api::V1::SessionsController < Api::V1::BaseController
       render json: {
         error: { email: "unable to find account with email(#{login_params.fetch(:email)})" }
       }
+      return
     end
 
     unless @customer.valid_password?(login_params.fetch(:password))
