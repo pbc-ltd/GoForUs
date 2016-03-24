@@ -5,10 +5,13 @@ gem 'rails', '4.2.5'
 
 group :production, :staging do
   gem 'rails_12factor'
+  gem 'puma'
 end
 
-gem 'puma'
 gem 'pg'
+gem 'activerecord-postgres-earthdistance'
+
+gem 'gpx'
 
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
@@ -21,8 +24,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 
 gem 'devise'
-gem 'kaminari'
+gem 'simple_token_authentication', '~> 1.0'
 
+gem 'kaminari'
 gem 'bootstrap_form'
 
 # Blogit depends on ActsAsTaggableOn

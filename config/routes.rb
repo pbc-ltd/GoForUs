@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get 'admin/' => 'admin/dashboard#index'
 
   devise_for :admins
+  devise_for :customer, skip: [:sessions, :passwords, :registrations]
+  devise_for :partners, skip: [:sessions, :passwords, :registrations]
+
   namespace :admin do
     resources :orders do
       resources :items
@@ -30,5 +33,22 @@ Rails.application.routes.draw do
     end
     resources :dashboard, only: [:index]
     resources :posts
+  end
+
+  namespace :api, constraints: { format: 'json' }  do
+    namespace :v1 do
+      # Signup
+      put 'register', to: 'registrations#create'
+      # Sessions
+      put 'login', to: 'sessions#create'
+      put 'logout', to: 'sessions#destroy'
+      delete 'logout', to: 'sessions#destroy'
+
+      # Location
+      put 'location/update', to: 'location#update'
+
+      # Partners
+      get '/partners/nearby', to: 'partners#index'
+    end
   end
 end

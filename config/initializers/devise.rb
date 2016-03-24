@@ -264,4 +264,4 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   end
 
-Devise.parent_controller = 'Admin::BaseController'
+#Devise.parent_controller = 'Admin::BaseController'
