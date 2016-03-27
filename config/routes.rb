@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       # Signup
       put 'register', to: 'registrations#create'
+
       # Sessions
       put 'login', to: 'sessions#create'
       put 'logout', to: 'sessions#destroy'
@@ -49,6 +50,13 @@ Rails.application.routes.draw do
 
       # Partners
       get '/partners/nearby', to: 'partners#index'
+
+
+      # Messages
+      get '/conversations/inbox', to: 'conversations#inbox'
+      get '/conversations/sentbox', to: 'conversations#sentbox'
+      get '/conversations/trash', to: 'conversations#trash'
+      get '/conversations/all', to: 'conversations#all'
     end
   end
 end

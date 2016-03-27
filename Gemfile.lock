@@ -70,6 +70,11 @@ GEM
     bootstrap_form (2.3.0)
     builder (3.2.2)
     byebug (8.2.2)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -88,6 +93,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.6.0)
+    foreigner (1.7.4)
+      activerecord (>= 3.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     gpx (0.8.2)
@@ -109,6 +116,10 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    mailboxer (0.13.0)
+      carrierwave (>= 0.5.8)
+      foreigner (>= 0.9.1)
+      rails (>= 3.2.0)
     mime-types (2.99.1)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
@@ -214,6 +225,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  mailboxer
   pg
   puma
   rails (= 4.2.5)
