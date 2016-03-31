@@ -3,6 +3,6 @@ class Api::V1::BaseController < ActionController::Base
   protect_from_forgery with: :null_session
 
   def user
-    @user = current_partner || current_customer
+    @user ||= current_partner || current_customer
   end
 end

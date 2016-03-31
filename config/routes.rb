@@ -52,11 +52,17 @@ Rails.application.routes.draw do
       get '/partners/nearby', to: 'partners#index'
 
 
-      # Messages
+      # Conversations
       get '/conversations/inbox', to: 'conversations#inbox'
       get '/conversations/sentbox', to: 'conversations#sentbox'
       get '/conversations/trash', to: 'conversations#trash'
       get '/conversations/all', to: 'conversations#all'
+      put '/conversations/reply', to: 'conversations#reply'
+
+      # Messages
+      get '/conversations/:conversation_id/messages', to: 'messages#index'
+      get '/conversations/:conversation_id/messages/', to: 'messages#index'
+      put '/conversations/:conversation_id/messages/:id/mark_read', to: 'messages#mark_as_read'
     end
   end
 end
