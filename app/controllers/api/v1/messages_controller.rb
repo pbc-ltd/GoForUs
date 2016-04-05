@@ -8,7 +8,6 @@ class Api::V1::MessagesController < Api::V1::BaseController
   def index
     @receipts = @conversation.receipts_for(user).includes(:message)
     # currently only using 1to1 relationship for a conversation
-    @receiver = @conversation.original_message.recipients.select{|r| r.id != user.id}.last
     if id = messages_params[:since_id]
       @receipts = @receipts.where('mailboxer_receipts.id > ?', id)
     end
@@ -16,7 +15,7 @@ class Api::V1::MessagesController < Api::V1::BaseController
 
   def mark_as_read
     if @receipt
-      @receipt.mark_as_read
+      @conversation.mark_as_read(user)
       render json: { status: 'ok' }
     else
       render json: { status: 'failed', message: 'unable to find message' }
