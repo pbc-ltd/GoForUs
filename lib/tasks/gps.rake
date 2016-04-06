@@ -3,36 +3,51 @@ require_relative '../simulator.rb'
 namespace :gps do
   desc ""
   task simulator: :environment do |t, args|
-    driver = Partner.find_by(email: 'tim_westwood@example.com')
-    driver = Partner.create!(name: 'Tim Westwood', email: 'tim_westwood@example.com', password: 'password') unless driver
+    drivers = []
+    driver1 = Partner.find_by(email: 'tim_westwood@example.com')
+    driver1 = Partner.create!(name: 'Tim Westwood', email: 'tim_westwood@example.com', password: 'password') unless driver1
+    drivers << driver1
+
+    driver2 = Partner.find_by(email: 'james_summerill@example.com')
+    driver2 = Partner.create!(name: 'James Summerill', email: 'james_summerill@example.com', password: 'password') unless driver2
+    drivers << driver2
 
     gpx = Gpx = GPX::GPXFile.new(gpx_file: File.join(File.dirname(__FILE__), "../../gpx_files/routes.gpx"))
-    while(true) do
-      gpx.tracks.each do |track|
-        p track.moving_duration
+    threads = []
 
-        steps = []
-        track.segments.each do |segment|
-          segment.points.each_with_index { |w, i|
-            next_point = segment.points[i + 1]
-            time_to_wait = if next_point
-                             next_point.time.to_f - w.time.to_f
-                           else
-                             1
-                           end
-            steps << { lat: w.lat, lng: w.lon, wait: time_to_wait }
-          }
+    drivers.each do |driver|
+      threads << Thread.new  {
+        while(true) do
+          gpx.tracks.each do |track|
+            p track.moving_duration
+
+            steps = []
+            track.segments.each do |segment|
+              segment.points.each_with_index { |w, i|
+                next_point = segment.points[i + 1]
+                time_to_wait = if next_point
+                                 next_point.time.to_f - w.time.to_f
+                               else
+                                 1
+                               end
+                steps << { lat: w.lat, lng: w.lon, wait: time_to_wait }
+              }
+            end
+
+
+            steps.each_with_index do |step, index|
+              puts "#{driver.name}: step (#{index})"
+
+              driver.update lat: step[:lat], lng: step[:lng]
+              puts "#{driver.name}: waiting #{step[:wait]} seconds"
+              sleep(step[:wait])
+            end
+          end
         end
-
-
-        steps.each_with_index do |step, index|
-          puts "step (#{index})"
-
-          driver.update lat: step[:lat], lng: step[:lng]
-          puts "waiting #{step[:wait]} seconds"
-          sleep(step[:wait])
-        end
-      end
+      }
+      sleep(5) # ensure that the driver is 5 seconds behind
     end
+
+    threads.each(&:join)
   end
 end
