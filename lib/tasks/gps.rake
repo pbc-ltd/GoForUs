@@ -12,6 +12,10 @@ namespace :gps do
     driver2 = Partner.create!(name: 'James Summerill', email: 'james_summerill@example.com', password: 'password') unless driver2
     drivers << driver2
 
+    driver3 = Partner.find_by(email: 'victoria_summerill@example.com')
+    driver3 = Partner.create!(name: 'Victoria Summerill', email: 'victoria_summerill@example.com', password: 'password') unless driver3
+    drivers << driver3
+
     gpx = Gpx = GPX::GPXFile.new(gpx_file: File.join(File.dirname(__FILE__), "../../gpx_files/routes.gpx"))
     threads = []
 
@@ -45,7 +49,7 @@ namespace :gps do
           end
         end
       }
-      sleep(5) # ensure that the driver is 5 seconds behind
+      sleep(20) # ensure that the driver is 5 seconds behind
     end
 
     threads.each(&:join)
