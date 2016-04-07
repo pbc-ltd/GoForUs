@@ -3,7 +3,7 @@ class Vehicle < ActiveRecord::Base
 
   belongs_to :partner
 
-  validates_presence_of :registration, :make, :model, :type, :partner_id
+  validates_presence_of :registration, :make, :model, :vehicle_type, :partner_id
   validates_uniqueness_of :registration
-  validates_inclusion_of :type, in: VEHICLE_TYPES
+  validates_inclusion_of :vehicle_type, in: VEHICLE_TYPES
 end
