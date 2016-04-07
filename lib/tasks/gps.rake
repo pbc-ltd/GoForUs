@@ -29,8 +29,8 @@ namespace :gps do
     driver3.online = false
     driver3.available = false
     driver3.save
-    unless (driver2.vehicles.count > 0)
-      driver2.vehicles.create!(registration: 'TrickyVicky', make: 'Tommy Moped', model: 'DB125T', vehicle_type: "Scooter")
+    unless (driver3.vehicles.count > 0)
+      driver3.vehicles.create!(registration: 'TrickyVicky', make: 'Tommy Moped', model: 'DB125T', vehicle_type: "Scooter")
     end
     drivers << driver3
 
