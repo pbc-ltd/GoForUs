@@ -6,14 +6,23 @@ namespace :gps do
     drivers = []
     driver1 = Partner.find_by(email: 'tim_westwood@example.com')
     driver1 = Partner.create!(name: 'Tim Westwood', email: 'tim_westwood@example.com', password: 'password') unless driver1
+    driver1.online = true
+    driver1.available = true
+    driver1.save
     drivers << driver1
 
     driver2 = Partner.find_by(email: 'james_summerill@example.com')
     driver2 = Partner.create!(name: 'James Summerill', email: 'james_summerill@example.com', password: 'password') unless driver2
+    driver2.online = true
+    driver2.available = false
+    driver2.save
     drivers << driver2
 
     driver3 = Partner.find_by(email: 'victoria_summerill@example.com')
     driver3 = Partner.create!(name: 'Victoria Summerill', email: 'victoria_summerill@example.com', password: 'password') unless driver3
+    driver3.online = false
+    driver3.available = false
+    driver3.save
     drivers << driver3
 
     gpx = Gpx = GPX::GPXFile.new(gpx_file: File.join(File.dirname(__FILE__), "../../gpx_files/routes.gpx"))
