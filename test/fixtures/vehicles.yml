@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  registration: MyString
+  make: MyString
+  model: MyString
+  type: 
+  partner_id: 1
+
+two:
+  registration: MyString
+  make: MyString
+  model: MyString
+  type: 
+  partner_id: 1

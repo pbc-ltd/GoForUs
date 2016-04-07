@@ -18,10 +18,14 @@ class Api::V1::SessionsController < Api::V1::BaseController
         error: { password: 'incorrect password' }
       }
     end
+
+    @customer.online = true
   end
 
   def destroy
     user.authentication_token = nil
+    user.online = false
+    user.available = false
     user.save
     render json: { status: "ok" }
   end
