@@ -1,1 +1,1 @@
-  json.(@customer, :id, :email, :mobile_number, :name, :authentication_token, :user_type)
+  json.(@user, :id, :email, :mobile_number, :name, :authentication_token, :user_type)
