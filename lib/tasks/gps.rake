@@ -10,7 +10,7 @@ namespace :gps do
     driver1.available = true
     driver1.save
     unless (driver1.vehicles.count > 0)
-      driver1.vehicles.create!(registration: 'WESTY WOOD', make: 'Vauxhall', model: 'Vectra XR', vehicle_type: "Standard Car")
+      driver1.vehicles.create!(registration: 'WESTY WOOD', make: 'Vauxhall', model: 'Vectra XR', vehicle_type: "Standard Car", online_with: true)
     end
     drivers << driver1
 
@@ -20,7 +20,7 @@ namespace :gps do
     driver2.available = false
     driver2.save
     unless (driver2.vehicles.count > 0)
-      driver2.vehicles.create!(registration: 'Go4Us App', make: 'BMW', model: 'i8', vehicle_type: "Standard Car")
+      driver2.vehicles.create!(registration: 'Go4Us App', make: 'BMW', model: 'i8', vehicle_type: "Standard Car", online_with: true)
     end
     drivers << driver2
 
@@ -30,7 +30,7 @@ namespace :gps do
     driver3.available = false
     driver3.save
     unless (driver3.vehicles.count > 0)
-      driver3.vehicles.create!(registration: 'TrickyVicky', make: 'Tommy Moped', model: 'DB125T', vehicle_type: "Scooter")
+      driver3.vehicles.create!(registration: 'TrickyVicky', make: 'Tommy Moped', model: 'DB125T', vehicle_type: "Scooter", online_with: true)
     end
     drivers << driver3
 
