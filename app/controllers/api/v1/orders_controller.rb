@@ -9,18 +9,25 @@ class Api::V1::OrdersController < Api::V1::BaseController
   # POST /api/v1/orders
   def create
     @order = user.orders.new(order_params.except(:message))
-    conversation = user.send_message(@order.partner, order_params[:message], 'Job Offer').conversation
-    @order.mailboxer_conversation = conversation
     @order.customer = user
-    if @order.save
-      render json: @order.to_json
-    else
-      Rails.logger.info(@order)
-      Rails.logger.info(@order.to_json)
-      render json: {
-        error: { order: 'Unable to create Order' }
-      }
-    end
+    @valid = @order.valid?
+      if @valid
+        @receipt = user.send_message(@order.partner, order_params[:message], 'Job Offer')
+        @conversation = @receipt.conversation
+        @order.mailboxer_conversation = @conversation
+
+        if @order.save
+          @saved = true
+          Rails.logger.info @receipt.to_json
+          Rails.logger.info @receipt.errors.to_json
+          Rails.logger.info @conversation.to_json
+          Rails.logger.info params
+          Rails.logger.info @order.to_json
+          Rails.logger.info @order.errors.to_json
+          Rails.logger.info @order.conversation.to_json
+        else
+        end
+      end
   end
 
   private

@@ -3,8 +3,6 @@ class Order < ActiveRecord::Base
   belongs_to :customer
   belongs_to :mailboxer_conversation, class_name: 'Mailboxer::Conversation'
 
-  validates_presence_of :mailboxer_conversation, :partner_id, :customer
-
   has_many :order_items
   has_many :items, through: :order_items
 
