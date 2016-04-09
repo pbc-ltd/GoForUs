@@ -9,7 +9,8 @@ class Api::V1::OrdersController < Api::V1::BaseController
   # POST /api/v1/orders
   def create
     @order = user.orders.new(order_params.except(:message))
-    @order.mailboxer_conversation = user.send_message(@order.partner, order_params[:message], 'Job Offer').conversation
+    conversation = user.send_message(@order.partner, order_params[:message], 'Job Offer').conversation
+    @order.mailboxer_conversation = conversation
     @order.customer = user
     if @order.save
       render json: @order.to_json
