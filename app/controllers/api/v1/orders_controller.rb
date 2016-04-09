@@ -1,4 +1,6 @@
 class Api::V1::OrdersController < Api::V1::BaseController
+  acts_as_token_authentication_handler_for Customer, fallback_to_devise: false, only: [:index, :create]
+
   # GET /api/v1/orders
   def index
     render json: user.orders
@@ -6,8 +8,8 @@ class Api::V1::OrdersController < Api::V1::BaseController
 
   # POST /api/v1/orders
   def create
-    @order = user.orders.new(order_params)
-    @order.mailboxer_conversation = user.send_message(order.partner, order_params[:message], 'Job Offer').conversation
+    @order = user.orders.new(order_params.except(:message))
+    @order.mailboxer_conversation = user.send_message(@order.partner, order_params[:message], 'Job Offer').conversation
     if @order.save
       render json: @order.to_json
     else
