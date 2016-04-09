@@ -32,7 +32,7 @@ class Api::V1::MessagesController < Api::V1::BaseController
   end
 
   def set_message
-    @receipt = @conversation.receipts_for(@user).find(message_params.fetch(:id))
+    @receipt = @conversation.messages.find(message_params.fetch(:id))
   end
 
   def messages_params
