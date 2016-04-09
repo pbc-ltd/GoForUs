@@ -13,7 +13,13 @@ class Api::V1::ConversationsController < Api::V1::BaseController
   def reply
     conversation = user.conversations.find(reply_params.fetch(:conversation_id))
     if conversation
-      message = conversation.messages.new(sender_id: user.id, customer_id: user.id, body: reply_params.fetch(:message))
+      message = nil
+      if user.user_type == 'Customer'
+        message = conversation.messages.new(sender_id: user.id, customer_id: user.id, body: reply_params.fetch(:message))
+      elsif user.user_type == 'Partner'
+        message = conversation.messages.new(sender_id: user.id, partner_id: user.id, body: reply_params.fetch(:message))
+      end
+
       if message.save
         render json: { status: 'ok' }
       else
