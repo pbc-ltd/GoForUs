@@ -6,17 +6,15 @@ if @saved
     json.(@conversation, :id, :subject)
   end
   json.message do
-    json.id @receipt.id
-    json.body @receipt.message.body
-    json.is_me @receipt.message.sender == @user
-    json.is_read_by_sender @receipt.message.is_read?(@receipt.message.sender)
-    json.is_read_by_receiver @receipt.message.is_read?(@receipt.receiver)
+    json.id @message.id
+    json.body @message.body
+    json.is_me @message.partner == @user
+    json.is_read @message.is_read?
   end
 else
 
   json.error do
     json.order @order.errors.to_json
-    json.receipt @receipt.errors.to_json
     json.conversation @converstion ? @conversation.errors.to_json : {}
   end
 end

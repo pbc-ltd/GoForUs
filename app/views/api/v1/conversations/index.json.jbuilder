@@ -1,4 +1,5 @@
 json.array!(@conversations) do |conversation|
   json.id      conversation.id
-  json.subject conversation.subject
+  json.partner_id conversation.partner_id
+  json.customer_id conversation.customer_id
 end

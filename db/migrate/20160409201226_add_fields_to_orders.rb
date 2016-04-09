@@ -1,6 +1,6 @@
 class AddFieldsToOrders < ActiveRecord::Migration
   def change
-    add_column :orders, :mailboxer_conversation_id, :integer
+    add_column :orders, :conversation_id, :integer
     add_column :orders, :estimated_cost, :decimal
     add_column :orders, :final_cost, :decimal
     add_column :orders, :accepted, :boolean, default: false

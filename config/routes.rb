@@ -54,9 +54,6 @@ Rails.application.routes.draw do
 
       # Conversations
       get '/conversations/inbox', to: 'conversations#inbox'
-      get '/conversations/sentbox', to: 'conversations#sentbox'
-      get '/conversations/trash', to: 'conversations#trash'
-      get '/conversations/all', to: 'conversations#all'
       put '/conversations/reply', to: 'conversations#reply'
 
       # Messages
@@ -64,6 +61,7 @@ Rails.application.routes.draw do
       get '/conversations/:conversation_id/messages/', to: 'messages#index'
       put '/conversations/:conversation_id/messages/:id/mark_read', to: 'messages#mark_as_read'
 
+      # Orders
       get 'orders', to: 'orders#index'
       put 'orders', to: 'orders#create'
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160409101226) do
+ActiveRecord::Schema.define(version: 20160409201226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,18 @@ ActiveRecord::Schema.define(version: 20160409101226) do
 
   add_index "blogit_posts", ["blogger_type", "blogger_id"], name: "index_blogit_posts_on_blogger_type_and_blogger_id", using: :btree
 
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "job_id"
+    t.integer  "partner_id"
+    t.integer  "customer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "conversations", ["customer_id"], name: "index_conversations_on_customer_id", using: :btree
+  add_index "conversations", ["job_id"], name: "index_conversations_on_job_id", using: :btree
+  add_index "conversations", ["partner_id"], name: "index_conversations_on_partner_id", using: :btree
+
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.integer  "store_id"
@@ -55,58 +67,25 @@ ActiveRecord::Schema.define(version: 20160409101226) do
 
   add_index "items", ["store_id"], name: "index_items_on_store_id", using: :btree
 
-  create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
-    t.integer "unsubscriber_id"
-    t.string  "unsubscriber_type"
-    t.integer "conversation_id"
+  create_table "jobs", force: :cascade do |t|
+    t.integer  "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "mailboxer_conversation_opt_outs", ["conversation_id"], name: "index_mailboxer_conversation_opt_outs_on_conversation_id", using: :btree
-  add_index "mailboxer_conversation_opt_outs", ["unsubscriber_id", "unsubscriber_type"], name: "index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type", using: :btree
-
-  create_table "mailboxer_conversations", force: :cascade do |t|
-    t.string   "subject",    default: ""
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  create_table "mailboxer_notifications", force: :cascade do |t|
-    t.string   "type"
-    t.text     "body"
-    t.string   "subject",              default: ""
-    t.integer  "sender_id"
-    t.string   "sender_type"
+  create_table "messages", force: :cascade do |t|
     t.integer  "conversation_id"
-    t.boolean  "draft",                default: false
-    t.string   "notification_code"
-    t.integer  "notified_object_id"
-    t.string   "notified_object_type"
-    t.string   "attachment"
-    t.datetime "updated_at",                           null: false
-    t.datetime "created_at",                           null: false
-    t.boolean  "global",               default: false
-    t.datetime "expires"
+    t.integer  "partner_id"
+    t.integer  "customer_id"
+    t.integer  "sender_id"
+    t.string   "body"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  add_index "mailboxer_notifications", ["conversation_id"], name: "index_mailboxer_notifications_on_conversation_id", using: :btree
-  add_index "mailboxer_notifications", ["notified_object_id", "notified_object_type"], name: "index_mailboxer_notifications_on_notified_object_id_and_type", using: :btree
-  add_index "mailboxer_notifications", ["sender_id", "sender_type"], name: "index_mailboxer_notifications_on_sender_id_and_sender_type", using: :btree
-  add_index "mailboxer_notifications", ["type"], name: "index_mailboxer_notifications_on_type", using: :btree
-
-  create_table "mailboxer_receipts", force: :cascade do |t|
-    t.integer  "receiver_id"
-    t.string   "receiver_type"
-    t.integer  "notification_id",                            null: false
-    t.boolean  "is_read",                    default: false
-    t.boolean  "trashed",                    default: false
-    t.boolean  "deleted",                    default: false
-    t.string   "mailbox_type",    limit: 25
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-  end
-
-  add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
-  add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+  add_index "messages", ["customer_id"], name: "index_messages_on_customer_id", using: :btree
+  add_index "messages", ["partner_id"], name: "index_messages_on_partner_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "order_id"
@@ -121,17 +100,17 @@ ActiveRecord::Schema.define(version: 20160409101226) do
   create_table "orders", force: :cascade do |t|
     t.integer  "partner_id"
     t.integer  "customer_id"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
-    t.integer  "mailboxer_conversation_id"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "conversation_id"
     t.decimal  "estimated_cost"
     t.decimal  "final_cost"
-    t.boolean  "accepted",                  default: false
+    t.boolean  "accepted",             default: false
     t.float    "pickup_location_lat"
     t.float    "pickup_location_lng"
     t.float    "dropoff_location_lat"
     t.float    "dropoff_location_lng"
-    t.boolean  "in_progress",               default: false
+    t.boolean  "in_progress",          default: false
   end
 
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
@@ -210,9 +189,6 @@ ActiveRecord::Schema.define(version: 20160409101226) do
   end
 
   add_foreign_key "items", "stores"
-  add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
-  add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
-  add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
 end
