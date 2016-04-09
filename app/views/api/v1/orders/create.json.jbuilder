@@ -3,12 +3,12 @@ if @saved
         :dropoff_location_lng, :pickup_location_lat, :pickup_location_lng, :final_cost,
        :estimated_cost, :in_progress)
   json.conversation do
-    json.(@conversation, :id, :subject)
+    json.(@conversation, :id, :partner_id, :customer_id)
   end
   json.message do
     json.id @message.id
     json.body @message.body
-    json.is_me @message.partner == @user
+    json.is_me @message.sender_id == @user.id
     json.is_read @message.is_read?
   end
 else

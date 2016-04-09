@@ -6,7 +6,7 @@ class Api::V1::MessagesController < Api::V1::BaseController
   before_action :set_message, only: [:mark_read]
 
   def index
-    @messages = @conversation.messages_for(user).includes(:message)
+    @messages = @conversation.messages
 
     if id = messages_params[:since_id]
       @messages = @messages.where('message.id > ?', id)

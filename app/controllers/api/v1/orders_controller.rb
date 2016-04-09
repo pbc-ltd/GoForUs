@@ -11,23 +11,14 @@ class Api::V1::OrdersController < Api::V1::BaseController
     @order = user.orders.new(order_params.except(:message))
     @order.customer = user
     @valid = @order.valid?
-      if @valid
-        @receipt = user.send_message(@order.partner, order_params[:message], 'Job Offer')
-        @conversation = @receipt.conversation
-        @order.mailboxer_conversation = @conversation
-
-        if @order.save
-          @saved = true
-          Rails.logger.info @receipt.to_json
-          Rails.logger.info @receipt.errors.to_json
-          Rails.logger.info @conversation.to_json
-          Rails.logger.info params
-          Rails.logger.info @order.to_json
-          Rails.logger.info @order.errors.to_json
-          Rails.logger.info @order.conversation.to_json
-        else
-        end
+    if @valid
+      @conversation = user.conversations.create!(partner: @order.partner, customer: user)
+      @message = @conversation.messages.create!(body: order_params[:message], sender_id: user.id, customer_id: user.id)
+      @order.conversation = @conversation
+      if @order.save
+        @saved = true
       end
+    end
   end
 
   private

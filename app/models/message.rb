@@ -3,7 +3,7 @@ class Message < ActiveRecord::Base
   belongs_to :partner
   belongs_to :customer
 
-  validates_presence_of :conversation, :converastion_id
+  validates_presence_of :conversation, :conversation_id
 
   def is_customer_message?
     !!customer
