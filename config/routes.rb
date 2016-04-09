@@ -63,6 +63,9 @@ Rails.application.routes.draw do
       get '/conversations/:conversation_id/messages', to: 'messages#index'
       get '/conversations/:conversation_id/messages/', to: 'messages#index'
       put '/conversations/:conversation_id/messages/:id/mark_read', to: 'messages#mark_as_read'
+
+      get 'orders', to: 'orders#index'
+      put 'orders', to: 'orders#create'
     end
   end
 end
