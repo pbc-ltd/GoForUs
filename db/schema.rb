@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160410113229) do
+ActiveRecord::Schema.define(version: 20160410124134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(version: 20160410113229) do
     t.boolean  "declined"
     t.boolean  "cancelled"
     t.boolean  "responded_to"
+    t.integer  "partner_id"
+    t.integer  "customer_id"
   end
 
   create_table "messages", force: :cascade do |t|
