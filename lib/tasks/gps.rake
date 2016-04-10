@@ -14,13 +14,13 @@ namespace :gps do
     end
     drivers << driver1
 
-    driver2 = Partner.find_by(email: 'james_summerill@example.com')
-    driver2 = Partner.create!(name: 'James Summerill', email: 'james_summerill@example.com', password: 'password') unless driver2
+    driver2 = Partner.find_by(email: 'partner@test.com')
+    driver2 = Partner.create!(name: 'James Summerill', email: 'partner@test.com', password: 'password') unless driver2
     driver2.online = true
     driver2.available = false
     driver2.save
     unless (driver2.vehicles.count > 0)
-      driver2.vehicles.create!(registration: 'Go4Us App', make: 'BMW', model: 'i8', vehicle_type: "Standard Car", online_with: true)
+      driver2.vehicles.create!(registration: 'Go4Us App V1', make: 'BMW', model: 'i8', vehicle_type: "Standard Car", online_with: true)
     end
     drivers << driver2
 
