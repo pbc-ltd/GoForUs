@@ -64,6 +64,11 @@ Rails.application.routes.draw do
       # Orders
       get 'orders', to: 'orders#index'
       put 'orders', to: 'orders#create'
+
+      # Jobs
+      get 'jobs', to: 'jobs#index'
+      get 'jobs/:id/accept', to: 'jobs#accept'
+      get 'jobs/:id/decline', to: 'jobs#decline'
     end
   end
 end
