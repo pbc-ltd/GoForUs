@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       # Sessions
       put 'login', to: 'sessions#create'
       put 'logout', to: 'sessions#destroy'
+      put 'update', to: 'sessions#update'
       delete 'logout', to: 'sessions#destroy'
 
       # Location

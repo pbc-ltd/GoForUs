@@ -1,6 +1,6 @@
 class Api::V1::SessionsController < Api::V1::BaseController
-  acts_as_token_authentication_handler_for Customer, fallback_to_devise: false, only: [:destroy]
-  acts_as_token_authentication_handler_for Partner, fallback_to_devise: false, only: [:destroy]
+  acts_as_token_authentication_handler_for Customer, fallback_to_devise: false, only: [:update, :destroy]
+  acts_as_token_authentication_handler_for Partner, fallback_to_devise: false, only: [:update, :destroy]
 
   # PUT /api/v1/login
   def create
@@ -23,6 +23,10 @@ class Api::V1::SessionsController < Api::V1::BaseController
     @user.save
   end
 
+  def update
+    user.update(:gcm_device_token)
+  end
+
   def destroy
     user.authentication_token = nil
     user.online = false
@@ -34,5 +38,9 @@ class Api::V1::SessionsController < Api::V1::BaseController
   private
   def login_params
     params.require(:user).permit(:email, :password)
+  end
+
+  def update_params
+    parmas.require(:user).permit(:gcm_token)
   end
 end

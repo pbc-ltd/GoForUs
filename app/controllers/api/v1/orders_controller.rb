@@ -16,7 +16,7 @@ class Api::V1::OrdersController < Api::V1::BaseController
       @message = @conversation.messages.create!(body: order_params[:message], sender_id: user.id, customer_id: user.id)
       @order.conversation = @conversation
       if @order.save
-        @order.partner.jobs.create!(customer: user, order: order)
+        @order.partner.jobs.create!(customer: user, order: @order)
         @saved = true
       end
     end
