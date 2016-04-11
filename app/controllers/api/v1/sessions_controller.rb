@@ -24,7 +24,7 @@ class Api::V1::SessionsController < Api::V1::BaseController
   end
 
   def update
-    if user.update(:gcm_device_token, update_params[:gcm_token])
+    if user.update(gcm_device_token: update_params[:gcm_token])
       render json: { status: 'ok' }
     else
       render json: {
