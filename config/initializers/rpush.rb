@@ -135,4 +135,4 @@ Rpush.reflect do |on|
 end
 
 raise "GCM key not provided" if ENV["GCM_AUTH_KEY"] == nil
-#app = Rpush::Gcm::App.find_or_create_by(name: 'goforus_android', auth_key: ENV["GCM_AUTH_KEY"], connections: 1)
+app = Rpush::Gcm::App.find_or_create_by(name: 'goforus_android', auth_key: ENV["GCM_AUTH_KEY"], connections: 1)
