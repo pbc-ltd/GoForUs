@@ -12,6 +12,7 @@ gem 'pg'
 gem 'activerecord-postgres-earthdistance'
 
 gem 'gpx'
+gem 'rpush'
 
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
