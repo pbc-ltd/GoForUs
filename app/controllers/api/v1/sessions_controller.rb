@@ -48,6 +48,6 @@ class Api::V1::SessionsController < Api::V1::BaseController
   end
 
   def update_params
-    parmas.require(:user).permit(:gcm_token)
+    params.require(:user).permit(:gcm_token)
   end
 end
