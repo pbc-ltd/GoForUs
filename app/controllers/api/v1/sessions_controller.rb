@@ -28,7 +28,7 @@ class Api::V1::SessionsController < Api::V1::BaseController
       render json: { status: 'ok' }
     else
       render json: {
-        status: 'failed'
+        status: 'failed',
         error: { gcm_token: 'something went wrong saving your token' }
       }
     end
