@@ -34,6 +34,5 @@ class Message < ActiveRecord::Base
       app: Rpush::Gcm::App.find_by_name('goforus_android'),
       registration_ids: [gcm_device_token], data: { type: 'New Message', message: self.to_json }
     ).save!
-
   end
 end
