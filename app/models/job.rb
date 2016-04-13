@@ -4,6 +4,10 @@ class Job < ActiveRecord::Base
   belongs_to :order
 
   def to_json
+    to_hash.to_json
+  end
+
+  def to_hash
     {
       id: id,
       order_id: order_id,
@@ -12,6 +16,6 @@ class Job < ActiveRecord::Base
       accepted: !!accepted,
       declined: !!declined,
       responded_to: !!responded_to
-    }.to_json
+    }
   end
 end

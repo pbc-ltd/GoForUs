@@ -3,7 +3,7 @@ class Api::V1::JobsController < Api::V1::BaseController
 Customer
   # GET /api/v1/jobs
   def index
-    render json: user.jobs.map(&:to_json)
+    render json: user.jobs.map(&:to_hash)
   end
 
   # PUT /api/v1/jobs/:id/accept
