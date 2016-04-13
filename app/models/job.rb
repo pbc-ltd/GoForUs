@@ -9,9 +9,9 @@ class Job < ActiveRecord::Base
       order_id: order_id,
       partner_id: partner_id,
       customer_id: customer_id,
-      accepted: accepted,
-      declined: declined,
-      responded_to: responded_to
+      accepted: !!accepted,
+      declined: !!declined,
+      responded_to: !!responded_to
     }.to_json
   end
 end
