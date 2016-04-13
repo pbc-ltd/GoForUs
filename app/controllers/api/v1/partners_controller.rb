@@ -16,7 +16,9 @@ class Api::V1::PartnersController < Api::V1::BaseController
     if user.save
       render json: { status: 'success', message: "You're now available and online" }
     else
-      render json: { status: 'failed', message: "Something went wrong while turning you online!" } end end
+      render json: { status: 'failed', message: "Something went wrong while turning you online!" } end
+  end
+
   private
   def index_params
     params.require(:lat)
