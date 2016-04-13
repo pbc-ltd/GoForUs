@@ -3,6 +3,8 @@ class Job < ActiveRecord::Base
   belongs_to :customer
   belongs_to :order
 
+  after_create :send_gcm_message
+
   def to_json
     to_hash.to_json
   end
@@ -17,5 +19,13 @@ class Job < ActiveRecord::Base
       declined: !!declined,
       responded_to: !!responded_to
     }
+  end
+
+  private
+  def send_gcm_message
+    Rpush::Gcm::Notification.new(
+      app: Rpush::Gcm::App.find_by_name('goforus_android'),
+      registration_ids: [partner.gcm_device_token], data: { type: 'New Job', job: self.to_json }
+    ).save!
   end
 end
