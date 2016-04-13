@@ -15,12 +15,25 @@ class Message < ActiveRecord::Base
     !is_customer_message
   end
 
+  def to_json
+    {
+      id: id,
+      body: body,
+      is_read: is_read?,
+      sender_id: sender_id,
+      partner_id: partner_id,
+      customer_id: customer_id,
+      conversation_id: conversation_id
+    }.to_json
+  end
+
   private
   def send_notification
     gcm_device_token = is_customer_message? ? conversation.partner.gcm_device_token : conversation.customer.gcm_device_token
     Rpush::Gcm::Notification.new(
       app: Rpush::Gcm::App.find_by_name('goforus_android'),
-      registration_ids: [gcm_device_token], data: { type: 'New Message', message: body }
+      registration_ids: [gcm_device_token], data: { type: 'New Message', message: self.to_json }
     ).save!
+
   end
 end
