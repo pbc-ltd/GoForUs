@@ -58,6 +58,6 @@ Customer
 
   private
   def job_params
-    params.require(:job).permit(:id)
+    params.permit(:id)
   end
 end
