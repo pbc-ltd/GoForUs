@@ -69,8 +69,8 @@ Rails.application.routes.draw do
 
       # Jobs
       get 'jobs', to: 'jobs#index'
-      get 'jobs/:id/accept', to: 'jobs#accept'
-      get 'jobs/:id/decline', to: 'jobs#decline'
+      put 'jobs/:id/accept', to: 'jobs#accept'
+      put 'jobs/:id/decline', to: 'jobs#decline'
     end
   end
 end
