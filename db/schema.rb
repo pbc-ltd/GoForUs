@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411101711) do
+ActiveRecord::Schema.define(version: 20160415154931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,8 @@ ActiveRecord::Schema.define(version: 20160411101711) do
     t.float    "dropoff_location_lat"
     t.float    "dropoff_location_lng"
     t.boolean  "in_progress",          default: false
+    t.string   "pickup_address"
+    t.string   "dropoff_address"
   end
 
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree

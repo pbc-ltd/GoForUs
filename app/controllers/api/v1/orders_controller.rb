@@ -27,7 +27,7 @@ class Api::V1::OrdersController < Api::V1::BaseController
     params.require(:order).permit(
       :partner_id, :pickup_location_lat, :pickup_location_lng,
       :dropoff_location_lat, :dropoff_location_lng, :estimated_cost,
-      :final_cost, :message
+      :final_cost, :message, :dropoff_address, :pickup_address
     )
   end
 end

@@ -1,7 +1,7 @@
 if @saved
   json.(@order, :id, :accepted, :customer_id, :partner_id, :dropoff_location_lat,
         :dropoff_location_lng, :pickup_location_lat, :pickup_location_lng, :final_cost,
-       :estimated_cost, :in_progress)
+       :estimated_cost, :in_progress, :pickup_address, :dropoff_address)
   json.conversation do
     json.(@conversation, :id, :partner_id, :customer_id)
   end
