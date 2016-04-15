@@ -24,7 +24,7 @@ class Order < ActiveRecord::Base
       pickup_location_lat: pickup_location_lat,
       pickup_location_lng: pickup_location_lng,
       pickup_address: pickup_address,
-      dropoff_addres: dropoff_address,
+      dropoff_address: dropoff_address,
       final_cost: final_cost ? final_cost : 0,
       estimated_cost: estimated_cost ? estimated_cost : 0,
       in_progress: in_progress,
