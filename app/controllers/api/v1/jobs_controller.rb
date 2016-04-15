@@ -32,7 +32,7 @@ Customer
   end
 
   # PUT /api/v1/jobs/:id/decline
-  def accept
+  def decline
     @job = user.jobs.find(job_params[:id])
 
     if @job
