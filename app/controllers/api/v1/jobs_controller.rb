@@ -21,7 +21,7 @@ Customer
           @job.declined = false
           @job.responded_to = true
 
-          if @job.save
+          if @job.save && @job.order.update(accepted: true)
             render json: { status: 'success', message: 'Job Accepted' }
           end
         end

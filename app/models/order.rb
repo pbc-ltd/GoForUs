@@ -5,9 +5,10 @@ class Order < ActiveRecord::Base
 
   has_many :order_items
   has_many :items, through: :order_items
-
+  has_many :jobs
 
   after_create :send_gcm_message
+  after_save :check_changes
 
   def to_json
     to_hash.to_json
@@ -32,6 +33,10 @@ class Order < ActiveRecord::Base
     }
   end
 
+  def job
+    jobs.last
+  end
+
 
   private
   def send_gcm_message
@@ -39,5 +44,21 @@ class Order < ActiveRecord::Base
       app: Rpush::Gcm::App.find_by_name('goforus_android'),
       registration_ids: [partner.gcm_device_token], data: { type: 'New Order', order: self.to_json }
     ).save!
+  end
+
+  def check_changes
+    if job && job.responded_to
+      if accepted
+        Rpush::Gcm::Notification.new(
+          app: Rpush::Gcm::App.find_by_name('goforus_android'),
+          registration_ids: [partner.gcm_device_token], data: { type: 'Accepted Order', order: self.to_json }
+        ).save!
+      else
+        Rpush::Gcm::Notification.new(
+          app: Rpush::Gcm::App.find_by_name('goforus_android'),
+          registration_ids: [partner.gcm_device_token], data: { type: 'Declined Order', order: self.to_json }
+        ).save!
+      end
+    end
   end
 end
