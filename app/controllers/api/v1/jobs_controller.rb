@@ -46,8 +46,8 @@ Customer
           @job.declined = true
           @job.responded_to = true
 
-          if @job.save
-            render json: { status: 'success', message: 'Job Declined' }
+          if @job.save && @job.order.update(accepted: false)
+           render json: { status: 'success', message: 'Job Declined' }
           end
         end
       end
