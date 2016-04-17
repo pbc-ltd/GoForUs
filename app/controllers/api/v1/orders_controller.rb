@@ -4,7 +4,7 @@ class Api::V1::OrdersController < Api::V1::BaseController
 
   # GET /api/v1/orders
   def index
-    render json: user.orders
+    render json: user.orders.map(&:to_hash)
   end
 
   # POST /api/v1/orders
