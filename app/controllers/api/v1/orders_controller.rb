@@ -1,5 +1,6 @@
 class Api::V1::OrdersController < Api::V1::BaseController
   acts_as_token_authentication_handler_for Customer, fallback_to_devise: false, only: [:index, :create]
+  acts_as_token_authentication_handler_for Partner, fallback_to_devise: false, only: [:index, :create]
 
   # GET /api/v1/orders
   def index
