@@ -28,8 +28,8 @@ class Order < ActiveRecord::Base
       dropoff_address: dropoff_address,
       final_cost: final_cost ? final_cost : 0,
       estimated_cost: estimated_cost ? estimated_cost : 0,
-      in_progress: in_progress,
-      responded_to: responded_to,
+      in_progress: !!in_progress,
+      responded_to: !!responded_to,
       conversation_id: conversation_id
     }
   end
