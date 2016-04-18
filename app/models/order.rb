@@ -17,7 +17,8 @@ class Order < ActiveRecord::Base
   def to_hash
     {
       id: id,
-      accepted: accepted,
+      accepted: !!accepted,
+      declined: !!declined,
       partner_id: partner_id,
       customer_id: customer_id,
       dropoff_location_lat: dropoff_location_lat,
@@ -36,10 +37,6 @@ class Order < ActiveRecord::Base
 
   def job
     jobs.last
-  end
-
-  def declined
-    !accepted
   end
 
   private

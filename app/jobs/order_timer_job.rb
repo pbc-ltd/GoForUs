@@ -8,7 +8,7 @@ class OrderTimerJob < ActiveJob::Base
       job.declined = true
       job.responded_to = true
       job.save
-      order.update(accepted: false, responded_to: false)
+      order.update(accepted: false, declined: true, responded_to: true)
     end
   end
 end
