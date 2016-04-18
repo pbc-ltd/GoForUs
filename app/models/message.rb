@@ -40,6 +40,7 @@ class Message < ActiveRecord::Base
   def mark_job_and_order_as_responded_to
     job = conversation.job
     if job && !job.responded_to
+      Rails.logger.info("\n\n\n\n Our job needs to be updated! \n\n\n\n")
       # update order before job so we don't trigger Job#check_changes
       job.order.update(responded_to: true)
       job.update(responded_to: true)
