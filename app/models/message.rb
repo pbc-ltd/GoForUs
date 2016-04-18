@@ -6,6 +6,7 @@ class Message < ActiveRecord::Base
   validates_presence_of :conversation, :conversation_id
 
   after_create :send_notification
+  after_create :mark_job_and_order_as_responded_to
 
   def is_customer_message?
     !!customer
@@ -34,5 +35,14 @@ class Message < ActiveRecord::Base
       app: Rpush::Gcm::App.find_by_name('goforus_android'),
       registration_ids: [gcm_device_token], data: { type: 'New Message', message: self.to_json }
     ).save!
+  end
+
+  def mark_job_and_order_as_responded_to
+    job = conversation.job
+    if job && !job.responded_to
+      # update order before job so we don't trigger Job#check_changes
+      job.order.update(responded_to: true)
+      job.update(responded_to: true)
+    end
   end
 end

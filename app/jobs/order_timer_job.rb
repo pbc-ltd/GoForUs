@@ -2,7 +2,7 @@ class OrderTimerJob < ActiveJob::Base
   queue_as :default
 
   def perform(order)
-    unless order.responded_to
+    if !order.responded_to && !order.job.responded_to
       job = order.job
       job.accepted = false
       job.declined = true
