@@ -14,16 +14,12 @@ Customer
       if @job.cancelled
         render json: { status: 'failed', message: 'This job has already been cancelled' }
       else
-        if @job.responded_to
-          render json: { status: 'failed', message: "You've already accepted/declined this job" }
-        else
-          @job.accepted = true
-          @job.declined = false
-          @job.responded_to = true
+        @job.accepted = true
+        @job.declined = false
+        @job.responded_to = true
 
-          if @job.save && @job.order.update(accepted: true, responded_to: true)
-            render json: { status: 'success', message: 'Job Accepted' }
-          end
+        if @job.save && @job.order.update(accepted: true, responded_to: true)
+          render json: { status: 'success', message: 'Job Accepted' }
         end
       end
     else
@@ -39,16 +35,12 @@ Customer
       if @job.accepted
         render json: { status: 'failed', message: 'This job has already been accepted' }
       else
-        if @job.responded_to
-          render json: { status: 'failed', message: "You've already accepted/declined this job" }
-        else
-          @job.accepted = false
-          @job.declined = true
-          @job.responded_to = true
+        @job.accepted = false
+        @job.declined = true
+        @job.responded_to = true
 
-          if @job.save && @job.order.update(accepted: false, responded_to: true)
-           render json: { status: 'success', message: 'Job Declined' }
-          end
+        if @job.save && @job.order.update(accepted: false, responded_to: true)
+          render json: { status: 'success', message: 'Job Declined' }
         end
       end
     else
