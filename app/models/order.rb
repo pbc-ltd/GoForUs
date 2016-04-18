@@ -38,6 +38,9 @@ class Order < ActiveRecord::Base
     jobs.last
   end
 
+  def declined
+    !accepted
+  end
 
   private
   def send_new_gcm_message
