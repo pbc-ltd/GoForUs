@@ -18,6 +18,7 @@ class Api::V1::OrdersController < Api::V1::BaseController
       @order.conversation = @conversation
       if @order.save
         @order.partner.jobs.create!(customer: user, order: @order)
+        OrderTimerJob.set(wait: 2.minutes).perform_later(@order)
         @saved = true
       end
     end
