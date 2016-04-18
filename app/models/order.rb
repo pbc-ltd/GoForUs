@@ -48,6 +48,11 @@ class Order < ActiveRecord::Base
   end
 
   def send_updated_gcm_message
+    Rpush::Gcm::Notification.new(
+      app: Rpush::Gcm::App.find_by_name('goforus_android'),
+      registration_ids: [partner.gcm_device_token, customer.gcm_device_token], data: { type: 'Updated Order', order: self.to_json }
+    ).save!
+
     if job && job.responded_to
       if accepted
         Rpush::Gcm::Notification.new(
@@ -60,11 +65,6 @@ class Order < ActiveRecord::Base
           registration_ids: [partner.gcm_device_token, customer.gcm_device_token], data: { type: 'Declined Order', order: self.to_json }
         ).save!
       end
-    else
-        Rpush::Gcm::Notification.new(
-          app: Rpush::Gcm::App.find_by_name('goforus_android'),
-          registration_ids: [partner.gcm_device_token, customer.gcm_device_token], data: { type: 'Updated Order', order: self.to_json }
-        ).save!
     end
   end
 end
