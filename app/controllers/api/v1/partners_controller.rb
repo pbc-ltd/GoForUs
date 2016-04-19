@@ -7,13 +7,16 @@ class Api::V1::PartnersController < Api::V1::BaseController
   # :radius(integer) (in meters)
   def index
     rad = index_params.fetch(:radius, 20_000)
-    @partners = Partner.within_radius(rad, index_params.fetch(:lat), index_params.fetch(:lng))
+    @partners = Partner.where(online: true).within_radius(rad, index_params.fetch(:lat), index_params.fetch(:lng))
   end
 
   def online
     user.available = online_params[:online]
     user.online = online_params[:online]
     if user.save
+      if user.available && user.online
+        OnlineTimerJob.set(wait: 15.minutes).perform_later(user, DateTime.now)
+      end
       render json: { status: 'success', message: "You're now available and online" }
     else
       render json: { status: 'failed', message: "Something went wrong while turning you online!" } end
