@@ -4,10 +4,12 @@ class Api::V1::LocationController < Api::V1::BaseController
 
   # /location/update
   def update
-    if user.update(update_location_params)
-      render json: { status: "ok" }
+    user.lat = update_location_params[:lat]
+    user.lng = update_location_params[:lng]
+    if user.save
+      render json: { status: 'ok' }
     else
-      render json: { status: "invalid" }
+      render json: { status: 'invalid' }
     end
   end
 
