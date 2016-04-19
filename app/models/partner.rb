@@ -11,8 +11,6 @@ class Partner < User
 
   validates_numericality_of :rating, greater_than_or_equal_to: 0, less_than_or_equal_to: 5
 
-  after_update :send_updated_gcm_message
-
   def to_json
     to_hash.to_json
   end
@@ -30,7 +28,6 @@ class Partner < User
     }
   end
 
-  private
   def send_updated_gcm_message
     Rpush::Gcm::Notification.new(
       app: Rpush::Gcm::App.find_by_name('goforus_android'),
