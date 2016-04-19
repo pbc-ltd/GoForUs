@@ -22,6 +22,7 @@ class Partner < User
       id: id,
       email: email,
       name: name,
+      mobile_number: mobile_number,
       authentication_token: authentication_token,
       user_type: user_type,
       available: available,
