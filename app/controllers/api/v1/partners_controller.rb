@@ -15,7 +15,7 @@ class Api::V1::PartnersController < Api::V1::BaseController
     user.online = online_params[:online]
     if user.save
       if user.available && user.online
-        OnlineTimerJob.set(wait: 15.minutes).perform_later(user, DateTime.now)
+        OnlineTimerJob.set(wait: 15.minutes).perform_later(user, DateTime.now.to_i)
       end
       render json: { status: 'success', message: "You're now available and online" }
     else
