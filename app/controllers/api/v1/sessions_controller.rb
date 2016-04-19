@@ -18,9 +18,6 @@ class Api::V1::SessionsController < Api::V1::BaseController
         error: { password: 'incorrect password' }
       }
     end
-
-    @user.online = true
-    @user.save
   end
 
   def update
