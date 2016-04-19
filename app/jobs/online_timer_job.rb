@@ -7,9 +7,7 @@ class OnlineTimerJob < ActiveJob::Base
     return unless user.online
 
     if user.updated_at < (last_check_time + 15.minutes)
-      user.online = false
-      user.available = false
-      user.save
+      user.update(online: false, available: false)
     else
       OnlineTimerJob.set(wait: 15.minutes).perform_later(user, DateTime.now)
     end
