@@ -14,7 +14,7 @@ class Partner < User
   after_update :send_updated_gcm_message
 
   def to_json
-    to_hash.json
+    to_hash.to_json
   end
 
   def to_hash
